@@ -1,0 +1,233 @@
+/*.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}*/
+
+.App {
+  text-align: center;
+}
+.nav-bar {
+  background-color: rgba(0,0,0,0.6);
+  /* Grid block for nav-items */ 
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  /* Fixed top position*/
+  position: fixed;
+  top: 0;
+  left: 0; 
+  right: 0;
+  /*padding-top: 8px; 
+  padding-bottom: 8px;*/
+  z-index: 1;
+}
+
+.l-nav-item {
+  text-align: left;
+}
+
+.l-button{
+  /* Text properties */
+  font-size: 25px;
+  font-weight: bold;  
+  font-family: "Century Gothic";
+  color: white;
+  /* Shape properties */
+  cursor: pointer;
+  text-decoration: none;
+  /* Position properties */
+  position: relative;
+  top: 22px;
+  left: 25px;
+  padding-left:10px;
+  padding-right:30px;
+  /* Border properties */
+  border-style: ridge;
+  border-radius: 5px;
+}
+
+.l-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.c-nav-item {
+/* Text properties */
+text-align:center;
+font-size: 25px;        
+font-family: 'Courier New', Courier, monospace;
+color: white;
+/* Position properties */
+position: relative;
+}
+
+.r-button{
+  /* Text properties */
+  font-size: 25px;     
+  font-weight: bold;     
+  font-family: "Century Gothic";
+  color: white;
+  /* Shape properties */
+  cursor: pointer;
+  text-decoration: none;
+  /* Position properties */
+  position: relative;
+  top: 22px;
+  right: 25px;
+  padding-left: 30px;
+  padding-right:10px;
+  /* Border properties */
+  border-style: ridge;
+  border-radius: 5px;
+}
+
+.r-button:hover {
+  background-color: white;
+  color: black;
+}
+
+.r-nav-item {
+  text-align: right;
+}
+
+.mainpage{
+  background-color: white;
+  padding-top:320px;
+  padding-bottom:190px;
+  z-index: -1;
+  text-align: center;
+  /* flex block for nav-items */ 
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  height: 60px;
+  width: 60px;
+  border: 1px solid #45a049;
+  color: White;
+  background-color:#45a049;
+
+  font-family: "Franklin Gothic Medium";
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+
+  float: center;
+
+  position:relative;
+  bottom: 40px;
+  margin-left:5px;
+  margin-top:5px;
+
+}
+
+.title-fake {
+  height: 60px;
+  width: 60px;
+  border: 1px solid red;
+  color: White;
+  background-color:red;
+
+  font-family: "Franklin Gothic Medium";
+  font-size: 45px;
+  font-weight: bold;
+  text-align: center;
+
+  float: center;
+
+  position:relative;
+  bottom: 40px;
+  margin-left:5px;
+  margin-top:5px;
+
+}
+
+
+.b-start{
+  /* Text properties */
+  font-size: 30px;        
+  font-family: "Franklin Gothic Medium";
+  color: Black;
+  /* Shape properties */
+  cursor: pointer;
+  text-decoration: none;
+  /* Position properties */
+  position: relative;
+  top: 100px;
+  /* Border properties */
+  border-style: ridge;
+  border-radius: 0px;
+}
+
+input[type=text] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  font-family: "Franklin Gothic Medium";
+  font-size: 20px;
+  width: 15%;
+  background-color: #F6EAC2;
+  color: black;
+  padding: 14px 20px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.name-box{
+  /* flex block for nav-items */ 
+  display: flex;
+  flex-direction: column;
+}
+
+.info-b{
+  font-size: 30px;
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: none;
+  position: relative;
+  top: 160px;
+}
+
+
+
