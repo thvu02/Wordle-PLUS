@@ -1,23 +1,11 @@
 import './Mainpage.css';
 import React from 'react';
-
-
-
+import {useNavigate} from 'react-router-dom';
 
 function Mainpage() {
+
   return (
     <div>
-      <div class="nav-bar">
-        <span class="l-nav-item">
-          <a href ="https://github.com/trungvu08/CS-35L-Team-Project---C.A.N.N.T." target="_blank" class = "l-button"> MAIN MENU </a>   
-        </span> 
-        <span >
-          <p class="c-nav-item">CS35L</p>
-        </span>   
-        <span class="r-nav-item">
-          <a href = "https://docs.google.com/document/d/112WOOn5ACMc4VSpA1OxFZR2rZnQP1WlDwgr_u3_vfaU/edit" target="_blank" class = "r-button"> LEADERBOARD </a>
-        </span>
-      </div>
       <div class = "mainpage">
       <span>
         <button className="b-bright" onclick=""> <img id="icon" src = "bright.png" /> </button>
