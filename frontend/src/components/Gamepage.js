@@ -1,15 +1,15 @@
-import './Homepage.css';
 import React from 'react';
+import './Gamepage.css';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 
-function Homepage()
-{
-  const [show, setShow] = useState(false);
-  const navigate = useNavigate();
-
-  return (
+function Gamepage() {
+    
+    const [show, setShow] = useState(false);
+    const navigate = useNavigate();
+    
+    return (
     <div>
       <div class="nav-bar">
         <span id="l-nav-item">
@@ -51,33 +51,9 @@ function Homepage()
           <button id = "r-button" onClick={() => navigate('Leaderboard')}> LEADERBOARD </button>
         </span>
       </div>
-      <div className = "mainpage">
-      <span>
-          <button id="title-fake"> F </button>
-          <button id="title-fake" > A </button>
-          <button id="title-fake" > K </button>
-          <button id="title-fake" > E </button>
-        </span>
-        <span>
-          <button id="title"> W </button>
-          <button id="title" > O </button>
-          <button id="title" > R </button>
-          <button id="title" > D </button>
-          <button id="title" > L </button>
-          <button id="title" > E </button>
-        </span>
-        <form class = "name-box"> 
-          <input type="text" placeholder="Enter Your Name Here!"/>
-          <input type="submit" onClick={() => navigate('Gamepage')} value="PLAY" />
-        </form>
-        <button id = "info-b" onClick={() => navigate('Infopage')}> || C.A.N.N.T || </button>
-      </div>
-    </div> 
-  )
+    </div>
+    )
 }
 
-
-export default Homepage;
-
-
+export default Gamepage;
 
