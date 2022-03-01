@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 
-import './Keyboard.css';
 import Keyboard from './Keyboard'
 
 
@@ -40,7 +39,9 @@ function App() {
           <input type="submit" value="PLAY" />
         </form>
         <a href ="https://github.com/trungvu08/CS-35L-Team-Project---C.A.N.N.T." target="_blank" class = "info-b"> || C.A.N.N.T || </a>
+        <div id="Keys">
         <Keyboard />
+        </div>
       </div>
     </div> 
   );

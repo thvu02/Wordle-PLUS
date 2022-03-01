@@ -1,9 +1,10 @@
 import React from 'react';
+import './Keyboard.css';
 
 function Keyboard() {
     return (
-        <div>
-            <span className="firstRowLetters">
+        <div id="Keyboard">
+            <span class="firstRowLetters">
             <button className="letters" > Q </button>
             <button className="letters" > W </button>
             <button className="letters" > E </button>
@@ -15,7 +16,7 @@ function Keyboard() {
             <button className="letters" > O </button>
             <button className="letters" > P </button>
             </span>
-            <span className="secondRowLetters">
+            <span class="secondRowLetters">
             <button className="letters" > A </button>
             <button className="letters" > S </button>
             <button className="letters" > D </button>
@@ -26,8 +27,8 @@ function Keyboard() {
             <button className="letters" > K </button>
             <button className="letters" > L </button>
             </span>
-            <span className="thirdRowLetters">
-            <button className="letters" > ENTER </button>
+            <span class="thirdRowLetters">
+            <button className="letters letterEnter" > ENTER </button>
             <button className="letters" > Z </button>
             <button className="letters" > X </button>
             <button className="letters" > C </button>
@@ -35,7 +36,7 @@ function Keyboard() {
             <button className="letters" > B </button>
             <button className="letters" > N </button>
             <button className="letters" > M </button>
-            <button className="letters" > ⌫ </button>
+            <button className="letters letterBkspc" > ⌫ </button>
             </span>
         </div>
     );
