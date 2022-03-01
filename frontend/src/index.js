@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Mainpage from './Mainpage';
+import Homepage from './Homepage';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';  
 
 ReactDOM.render(
   <React.StrictMode>
-    <Mainpage />
+    <Homepage />
   </React.StrictMode>,
   document.getElementById('root')
 );
