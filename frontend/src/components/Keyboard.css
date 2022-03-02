@@ -1,0 +1,49 @@
+#Keyboard {
+    /* changing where the keyboard goes relative to the webpage */
+    color:black;
+    text-align: center;
+}
+
+.letters {
+    /* Text properties */
+    font-size: 14px;
+    font-weight: bold;  
+    font-family: "Century Gothic";
+    background-color: lightgray;
+    color: black;
+    /* Shape properties */
+    cursor: pointer;
+    text-decoration: none;
+    /* Position properties */
+    position: relative;
+    margin:3px;
+    width:42px;
+    height:54px;
+    /* Border properties */
+    border-color:transparent;
+    border-style:ridge;
+    border-radius: 5px;
+    float:center;
+}
+
+.letterEnter {
+    width:62px;
+}
+.letterBkspc {
+    display:inline-block;
+    font-size:26px;
+    top:5px;
+    width:62px;
+    
+}
+.firstRowLetters {
+    display:block;
+    margin-bottom:1px;
+}
+.secondRowLetters {
+    display:block;
+    margin-bottom:1px;
+}
+.thirdRowLetters {
+    display:block;
+}

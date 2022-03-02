@@ -46,14 +46,28 @@ function Infopage() {
         <p id ="c-nav-item">CS35L</p>
       </span>   
       <span id ="r-nav-item">
-        <button id = "r-button" onClick={() => navigate('Leaderboard')}> LEADERBOARD </button>
+        <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
       </span>
     </div>
-
-    <div>
-      <p>You can put and write anything you want here</p>
+    <div id = "info">
+      <p id = "group_name">|| C.A.N.N.T ||</p>
+      <hr />
+      <span id ="block_display">
+          <button id="fake" > F </button>
+          <button id="fake" > A </button>
+          <button id="fake" > K </button>
+          <button id="fake" > E </button>
+      </span>
+      <span id ="block_display">
+          <button id="title1"> W </button>
+          <button id="title1" > O </button>
+          <button id="title1" > R </button>
+          <button id="title1" > D </button>
+          <button id="title1" > L </button>
+          <button id="title1" > E </button>
+       </span>
     </div>
-    
+
   </div>
   )
 }

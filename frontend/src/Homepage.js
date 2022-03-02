@@ -52,8 +52,8 @@ function Homepage()
         </span>
       </div>
       <div className = "mainpage">
-      <span>
-          <button id="title-fake"> F </button>
+        <span>
+          <button id="title-fake" > F </button>
           <button id="title-fake" > A </button>
           <button id="title-fake" > K </button>
           <button id="title-fake" > E </button>

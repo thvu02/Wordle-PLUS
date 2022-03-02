@@ -40,7 +40,7 @@
   padding-left:10px;
   padding-right:30px;
   /* Border properties */
-  border-style:none;
+  border-color: transparent;
 }
 
 #l-button:hover {
@@ -75,7 +75,7 @@ top:20px;
   padding-left: 30px;
   padding-right:10px;
   /* Border properties */
-  border-style: none;
+  border-color: transparent;
 }
 
 #r-button:hover {
@@ -148,3 +148,12 @@ top:20px;
   top: 15px;
 }
 
+#Keys {
+  /* Centering the Keyboard to the bottom of the page */
+  position:absolute;
+  bottom:10px;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0px;
+  right: 0px;
+}

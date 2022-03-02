@@ -3,6 +3,8 @@ import './Gamepage.css';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
+import Keyboard from './Keyboard'
+import Gameboard from './Gameboard'
 
 function Gamepage() {
     
@@ -48,8 +50,12 @@ function Gamepage() {
           <p id ="c-nav-item">CS35L</p>
         </span>   
         <span id ="r-nav-item">
-          <button id = "r-button" onClick={() => navigate('Leaderboard')}> LEADERBOARD </button>
+          <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
         </span>
+      </div>
+      <div id="Keys">
+        <Gameboard />
+        <Keyboard />
       </div>
     </div>
     )
