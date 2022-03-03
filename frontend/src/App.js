@@ -8,12 +8,19 @@ import { Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 
 function App() {
+  let navigate = useNavigate();
+  function handleClick() {
+    navigate('/');
+  }
+
   return (
     <div>
       <div class="nav-bar">
         <span class="l-nav-item">
-          <a href ="https://github.com/trungvu08/CS-35L-Team-Project---C.A.N.N.T." target="_blank" class = "l-button"> MAIN MENU </a>   
+          <a href = "https://github.com/trungvu08/CS-35L-Team-Project---C.A.N.N.T." target="_blank" class = "l-button"> 
+          MAIN MENU </a>   
         </span> 
+        <button onClick={handleClick}>go home</button>
         <span >
           <p class="c-nav-item">CS35L</p>
         </span>   
