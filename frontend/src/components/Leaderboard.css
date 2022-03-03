@@ -23,6 +23,11 @@
   text-align: left;
 }
 
+.leaderboardTable {
+  background-color: rgba(212, 199, 124, 0.568);
+  margin-top: 100px;
+}
+
 #l-button{
   /* Text properties */
   font-size: 25px;
