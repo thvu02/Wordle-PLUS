@@ -1,8 +1,4 @@
-#gameboard {
-    text-align: center
-}
-
-#square {
+.square {
     height: 70px;
     width: 70px;
     border: 2px solid #bebebe;
@@ -17,8 +13,4 @@
     position:relative;
     bottom: 30px;
     margin:3px;
-}
-
-#block_display {
-    display:block;
 }
