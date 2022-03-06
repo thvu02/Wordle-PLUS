@@ -22,9 +22,6 @@ function Gamepage() {
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
 
-    console.log(curRow);
-    console.log(curCol);
-
     // handleClick handles a regular letter press on the keyboard
     function handleClick(row, col, input) {
       // create a copy of the state of letters
@@ -61,8 +58,6 @@ function Gamepage() {
           setCurRow(curRow + 1);
         }
       }
-      console.log(curCol);
-      console.log(curRow);
     }
 
     return (
