@@ -102,8 +102,10 @@ function Gamepage() {
           <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
         </span>
       </div>
+      <div id="Gamegrid">
+      <Gameboard letters={letters}/>
+      </div>
       <div id="Keys">
-        <Gameboard letters={letters}/>
         <Keyboard handleClick={handleClick} handleBackspace={handleBackspace} handleEnter={handleEnter} curRow={curRow} curCol={curCol}/>
       </div>
     </div>
