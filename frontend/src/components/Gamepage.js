@@ -7,10 +7,30 @@ import Keyboard from './Keyboard'
 import Gameboard from './Gameboard'
 
 function Gamepage() {
+    // change array to 6x5
+
+    const [letters, setLetters] = useState([
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+    ]);
     
+    console.log(letters);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
-    
+
+    // define handleClick function
+    function handleClick() {
+      // create a copy of the state of letters
+      const lettersConst = [...letters];
+      lettersConst[0][0] = 'A';
+      lettersConst[0][1] = 'B';
+      setLetters(lettersConst);
+    }
+
     return (
     <div>
       <div class="nav-bar">
@@ -54,8 +74,9 @@ function Gamepage() {
         </span>
       </div>
       <div id="Keys">
-        <Gameboard />
+        <Gameboard letters={letters}/>
         <Keyboard />
+        <button onClick={() => handleClick()}>update letters</button>
       </div>
     </div>
     )
