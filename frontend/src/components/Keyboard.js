@@ -1,41 +1,29 @@
 import React from 'react';
 import './Keyboard.css';
+import Gamepage from './Gamepage';
 
 function Keyboard() {
+    let topRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+    let middleRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
+    let bottomRow = ["Z", "X", "C", "V", "B", "N", "M"];
+
     return (
         <div id="Keyboard">
             <span class="firstRowLetters">
-                <button className="letters" > Q </button>
-                <button className="letters" > W </button>
-                <button className="letters" > E </button>
-                <button className="letters" > R </button>
-                <button className="letters" > T </button>
-                <button className="letters" > Y </button>
-                <button className="letters" > U </button>
-                <button className="letters" > I </button>
-                <button className="letters" > O </button>
-                <button className="letters" > P </button>
+                {topRow.map((letter) => {
+                    return <button className="letters">{letter}</button>
+                })}
             </span>
             <span class="secondRowLetters">
-                <button className="letters" > A </button>
-                <button className="letters" > S </button>
-                <button className="letters" > D </button>
-                <button className="letters" > F </button>
-                <button className="letters" > G </button>
-                <button className="letters" > H </button>
-                <button className="letters" > J </button>
-                <button className="letters" > K </button>
-                <button className="letters" > L </button>
+                {middleRow.map((letter) => {
+                    return <button className="letters">{letter}</button>
+                })}
             </span>
             <span class="thirdRowLetters">
                 <button className="letters letterEnter" > ENTER </button>
-                <button className="letters" > Z </button>
-                <button className="letters" > X </button>
-                <button className="letters" > C </button>
-                <button className="letters" > V </button>
-                <button className="letters" > B </button>
-                <button className="letters" > N </button>
-                <button className="letters" > M </button>
+                {bottomRow.map((letter) => {
+                    return <button className="letters">{letter}</button>
+                })}            
                 <button className="letters letterBkspc" > ⌫ </button>
             </span>
         </div>

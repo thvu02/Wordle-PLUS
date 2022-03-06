@@ -17,17 +17,16 @@ function Gamepage() {
       [null, null, null, null, null],
       [null, null, null, null, null],
     ]);
-    
+
     console.log(letters);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
 
     // define handleClick function
-    function handleClick() {
+    function handleClick(row, col, input) {
       // create a copy of the state of letters
       const lettersConst = [...letters];
-      lettersConst[0][0] = 'A';
-      lettersConst[0][1] = 'B';
+      lettersConst[row, col] = input;
       setLetters(lettersConst);
     }
 
@@ -76,7 +75,6 @@ function Gamepage() {
       <div id="Keys">
         <Gameboard letters={letters}/>
         <Keyboard />
-        <button onClick={() => handleClick()}>update letters</button>
       </div>
     </div>
     )
