@@ -9,6 +9,8 @@ import Gameboard from './Gameboard'
 function Gamepage() {
     // change array to 6x5
 
+    const [curRow, setCurRow] = useState(0);
+    const [curCol, setCurCol] = useState(0);
     const [letters, setLetters] = useState([
       [null, null, null, null, null],
       [null, null, null, null, null],
@@ -17,8 +19,6 @@ function Gamepage() {
       [null, null, null, null, null],
       [null, null, null, null, null],
     ]);
-
-    console.log(letters);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ function Gamepage() {
     function handleClick(row, col, input) {
       // create a copy of the state of letters
       const lettersConst = [...letters];
-      lettersConst[row, col] = input;
+      lettersConst[row][col] = input;
       setLetters(lettersConst);
     }
 
@@ -74,7 +74,7 @@ function Gamepage() {
       </div>
       <div id="Keys">
         <Gameboard letters={letters}/>
-        <Keyboard />
+        <Keyboard handleClick={handleClick} curRow={curRow} curCol={curCol}/>
       </div>
     </div>
     )

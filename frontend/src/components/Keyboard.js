@@ -2,7 +2,7 @@ import React from 'react';
 import './Keyboard.css';
 import Gamepage from './Gamepage';
 
-function Keyboard() {
+function Keyboard(props) {
     let topRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
     let middleRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
     let bottomRow = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -11,20 +11,20 @@ function Keyboard() {
         <div id="Keyboard">
             <span class="firstRowLetters">
                 {topRow.map((letter) => {
-                    return <button className="letters">{letter}</button>
+                    return <button className="letters" onClick={() => props.handleClick(props.curRow, props.curCol, letter)}>{letter}</button>
                 })}
             </span>
             <span class="secondRowLetters">
                 {middleRow.map((letter) => {
-                    return <button className="letters">{letter}</button>
+                    return <button className="letters" onClick={() => props.handleClick(props.curRow, props.curCol, letter)}>{letter}</button>
                 })}
             </span>
             <span class="thirdRowLetters">
-                <button className="letters letterEnter" > ENTER </button>
+                <button className="letters letterEnter"> ENTER </button>
                 {bottomRow.map((letter) => {
-                    return <button className="letters">{letter}</button>
+                    return <button className="letters" onClick={() => props.handleClick(props.curRow, props.curCol, letter)}>{letter}</button>
                 })}            
-                <button className="letters letterBkspc" > ⌫ </button>
+                <button className="letters letterBkspc"> ⌫ </button>
             </span>
         </div>
     );
