@@ -20,11 +20,11 @@ function Keyboard(props) {
                 })}
             </span>
             <span class="thirdRowLetters">
-                <button className="letters letterEnter"> ENTER </button>
+                <button className="letters letterEnter" onClick={() => props.handleEnter(props.curRow, props.curCol, "Hello")}> ENTER </button>
                 {bottomRow.map((letter) => {
                     return <button className="letters" onClick={() => props.handleClick(props.curRow, props.curCol, letter)}>{letter}</button>
                 })}            
-                <button className="letters letterBkspc"> ⌫ </button>
+                <button className="letters letterBkspc" onClick={() => props.handleBackspace(props.curRow, props.curCol)}> ⌫ </button>
             </span>
         </div>
     );
