@@ -51,11 +51,11 @@ function Gamepage() {
     function handleKeypress(event) {
       const lettersConst = [...letters];
       // check cases for special key presses
-      if (event.code == "Enter") {
+      if (event.code === "Enter") {
         // PLACEHOLDER until a new function is added that checks if the word is valid 
         handleEnter(curRow, curCol, "worde");
       }
-      else if (event.code == "Backspace") {
+      else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
       }
       // validate key press to only allow letters

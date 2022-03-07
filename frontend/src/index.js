@@ -7,7 +7,7 @@ import Homepage from './Homepage';
 import Gamepage from './components/Gamepage';
 import Leaderboard from './components/Leaderboard';
 import Infopage from './components/Infopage'
-import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 ReactDOM.render(
   <BrowserRouter>

@@ -131,8 +131,6 @@ top:20px;
   margin-bottom: 3px;
 }
 
-
-
 #display-flex{
   display:flex;
   flex-direction: row;
@@ -190,7 +188,7 @@ top:20px;
   font-weight: bold;
   text-align: center;
 
-  margin: 3px;
+  margin: 2px;
 
 }
 
@@ -206,10 +204,18 @@ top:20px;
   font-weight: bold;
   text-align: center;
 
-  margin: 3px;
+  margin: 2px;
 
 }
 
 #block_display {
   display:block;
+}
+
+.display_inline{
+  text-align: center;
+  position: relative;
+  top: 150px;
+  margin: 20px;
+  display: block;
 }

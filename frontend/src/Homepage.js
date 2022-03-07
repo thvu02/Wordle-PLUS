@@ -1,6 +1,6 @@
 import './Homepage.css';
 import Axios from "axios";
-import { BASE_URL } from "./config";
+import { BASE_URL } from "./config.js";
 import React from 'react';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
