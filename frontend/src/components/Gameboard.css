@@ -2,23 +2,6 @@
     text-align: center
 }
 
-#square {
-    height: 70px;
-    width: 70px;
-    border: 2px solid #bebebe;
-    color: Black;
-    background-color:white;
-  
-    font-family: "Franklin Gothic Medium";
-    font-size: 45px;
-    font-weight: bold;
-    text-align: center;
-  
-    position:relative;
-    bottom: 30px;
-    margin:3px;
-}
-
 #block_display {
     display:block;
 }

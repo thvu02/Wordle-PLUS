@@ -1,6 +1,5 @@
 import React from 'react';
 import './Keyboard.css';
-import Gamepage from './Gamepage';
 
 function Keyboard(props) {
     let topRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
