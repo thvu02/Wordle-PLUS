@@ -35,7 +35,7 @@ function Gamepage() {
       setLetters(lettersConst);
     }
 
-    // handleBackspace handles when the backspace key is pressed on the keyboard
+    // handleBackspace handles when the backspace key is clicked
     function handleBackspace(row, col) {
       const lettersConst = [...letters];
       if (col === 0) {
@@ -44,6 +44,31 @@ function Gamepage() {
         lettersConst[row][col - 1] = null;
         setLetters(lettersConst);
         setCurCol(curCol - 1);
+      }
+    }
+
+    // handle handles when a key is pressed
+    function handleKeypress(event) {
+      const lettersConst = [...letters];
+      // check cases for special key presses
+      if (event.code == "Enter") {
+        // PLACEHOLDER until a new function is added that checks if the word is valid 
+        handleEnter(curRow, curCol, "worde");
+      }
+      else if (event.code == "Backspace") {
+        handleBackspace(curRow, curCol);
+      }
+      // validate key press to only allow letters
+      else if ((event.code[3]).match(/[a-z]/i)) {
+        if (curCol === 5) {
+          // letter not added if row already full
+          return;
+        } else {
+          // add entered letter (KeyM) so [3]
+          lettersConst[curRow][curCol] = event.code[3];
+          setCurCol(curCol + 1);
+        }
+        setLetters(lettersConst);
       }
     }
 
@@ -61,7 +86,8 @@ function Gamepage() {
     }
 
     return (
-    <div>
+      // look for key pressed down and trigger keypress handler event [tabIndex necessary]
+    <div tabIndex="0" onKeyDown={handleKeypress}>
       <div class="nav-bar">
         <span id="l-nav-item">
           <button variant="primary" id = "l-button" onClick={() => setShow(true)}> INSTRUCTION </button>
@@ -102,8 +128,10 @@ function Gamepage() {
           <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
         </span>
       </div>
+      <div id="Gamegrid">
+      <Gameboard letters={letters}/>
+      </div>
       <div id="Keys">
-        <Gameboard letters={letters}/>
         <Keyboard handleClick={handleClick} handleBackspace={handleBackspace} handleEnter={handleEnter} curRow={curRow} curCol={curCol}/>
       </div>
     </div>
@@ -111,4 +139,3 @@ function Gamepage() {
 }
 
 export default Gamepage;
-

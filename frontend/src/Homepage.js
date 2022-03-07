@@ -4,6 +4,14 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 
+onSubmit() {
+  if (!this.state.playername) {
+    alert("Please enter your username.");
+    return;
+  }
+  navigate('Infopage')
+}
+
 function Homepage()
 {
   const [show, setShow] = useState(false);
@@ -67,10 +75,10 @@ function Homepage()
           <button id="title" > E </button>
         </span>
         <form class = "name-box"> 
-          <input type="text" placeholder="Enter Your Name Here!"/>
+          <input type="text" name="playername" placeholder="Enter Your Name Here!"/>
           <input type="submit" onClick={() => navigate('Gamepage')} value="PLAY" />
         </form>
-        <button id = "info-b" onClick={() => navigate('Infopage')}> || C.A.N.N.T || </button>
+        <button id = "info-b" onClick={this.onSubmit}> || C.A.N.N.T || </button>
       </div>
     </div> 
   )
