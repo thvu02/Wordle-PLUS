@@ -1,21 +1,29 @@
 import './Homepage.css';
+import Axios from "axios";
+import { BASE_URL } from "./config.js";
 import React from 'react';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 
-onSubmit() {
-  if (!this.state.playername) {
-    alert("Please enter your username.");
-    return;
-  }
-  navigate('Infopage')
-}
+const axios = Axios.create({
+  baseURL: BASE_URL,
+});
 
 function Homepage()
 {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+  const [playerName, setPlayerName] = useState("");
+
+  const handleSubmit = (event) => {
+    if(!playerName) {
+      alert('Pleaser enter a name to play.');
+      return;
+    }
+    axios.post("/addname", {playerName});
+    navigate('Gamepage')
+  }
 
   return (
     <div>
@@ -75,10 +83,10 @@ function Homepage()
           <button id="title" > E </button>
         </span>
         <form class = "name-box"> 
-          <input type="text" name="playername" placeholder="Enter Your Name Here!"/>
-          <input type="submit" onClick={() => navigate('Gamepage')} value="PLAY" />
+          <input type="text" name = "playername" value={playerName} onChange={(pname) => setPlayerName(pname.target.value)}  placeholder="Enter Your Name Here!"/>
+          <button id="submit" type="submit" name = "play" onClick = {handleSubmit}>PLAY</button>
         </form>
-        <button id = "info-b" onClick={this.onSubmit}> || C.A.N.N.T || </button>
+        <button id = "info-b" onClick={() => navigate('Infopage')}> || C.A.N.N.T || </button>
       </div>
     </div> 
   )

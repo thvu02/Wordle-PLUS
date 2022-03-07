@@ -1,13 +1,16 @@
 import mongoose from 'mongoose';
+
 const schema = mongoose.Schema;
 
 const userSchema = new schema({
-    playername: {
+    playerName: {
         type: String,
-        required: true,
+    },
+    status: {
+        type: String,
     }
 })
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+export default User;
