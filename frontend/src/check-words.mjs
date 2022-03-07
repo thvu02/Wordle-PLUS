@@ -30,6 +30,60 @@ function isValidWord(word, wordLength) {
 
 }
 
+function correctLetters(guess, answer) {
+    var result = [];
+
+    /* Create a dictionary answerLetters which stores each letter
+    in the answer as a key with the value of how many times
+    that letter appears in the answer. */
+    var answerLetters = {};
+    for (let i = 0; i < answer.length; i++) {
+        if (answerLetters.hasOwnProperty(answer[i])) {
+            answerLetters[answer[i]]++;
+        } else {
+            answerLetters[answer[i]] = 1;
+        }
+    }
+    
+    var guessLetters = {};
+    for (let i = 0; i < guess.length; i++) {
+        /* Setting up dictionary for what letters have
+        appeared in the guess thus far. */
+        if (guess[i] == answer[i]) {
+            result.push("green");
+            if (guessLetters.hasOwnProperty(guess[i])) {
+                guessLetters[guess[i]]++;
+            } else {
+                guessLetters[guess[i]] = 1;
+            }
+        } else {
+            result.push("gray");
+        }
+    }
+    
+    for (let i = 0; i < guess.length; i++) {
+        if (guess[i] != answer[i]) {
+            if (guessLetters.hasOwnProperty(guess[i])) {
+                guessLetters[guess[i]]++;
+            } else {
+                guessLetters[guess[i]] = 1;
+            }
+            if (answerLetters.hasOwnProperty(guess[i]) 
+                   && guessLetters[guess[i]] <= answerLetters[guess[i]]){
+            
+                result[i] = "yellow";
+            }
+        }
+    }
+
+    return result;
+}
+
+
+
+
+
 export {
-    isValidWord
+    isValidWord,
+    correctLetters
 };
