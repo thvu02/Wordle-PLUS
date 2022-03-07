@@ -1,6 +1,6 @@
 import './Homepage.css';
 import Axios from "axios";
-import { BASE_URL } from "./config.js";
+import { BASE_URL } from "./config";
 import React from 'react';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
@@ -16,13 +16,16 @@ function Homepage()
   const navigate = useNavigate();
   const [playerName, setPlayerName] = useState("");
 
+
   const handleSubmit = (event) => {
     if(!playerName) {
       alert('Pleaser enter a name to play.');
       return;
     }
-    axios.post("/addname", {playerName});
-    navigate('Gamepage')
+    else{
+      axios.post("/addname", {playerName});
+      navigate('Gamepage');
+    }
   }
 
   return (
@@ -91,7 +94,6 @@ function Homepage()
     </div> 
   )
 }
-
 
 export default Homepage;
 
