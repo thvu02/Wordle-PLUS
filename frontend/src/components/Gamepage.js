@@ -7,10 +7,59 @@ import Keyboard from './Keyboard'
 import Gameboard from './Gameboard'
 
 function Gamepage() {
-    
+
+    // definitions of state
+    const [curRow, setCurRow] = useState(0);
+    const [curCol, setCurCol] = useState(0);
+    const [letters, setLetters] = useState([
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+      [null, null, null, null, null],
+    ]);
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
-    
+
+    // handleClick handles a regular letter press on the keyboard
+    function handleClick(row, col, input) {
+      // create a copy of the state of letters
+      const lettersConst = [...letters];
+      lettersConst[row][col] = input;
+      if (curCol === 5) {
+        return;
+      } else {
+        setCurCol(curCol + 1);
+      }
+      setLetters(lettersConst);
+    }
+
+    // handleBackspace handles when the backspace key is pressed on the keyboard
+    function handleBackspace(row, col) {
+      const lettersConst = [...letters];
+      if (col === 0) {
+        return;
+      } else {
+        lettersConst[row][col - 1] = null;
+        setLetters(lettersConst);
+        setCurCol(curCol - 1);
+      }
+    }
+
+    // handleEnter handles when the enter key is pressed on the keyboard
+    function handleEnter(row, col, word) {
+      // PLACEHOLDER until a new function is added that checks if the word is valid
+      if (true) {
+        if (col !== 5) {
+          return;
+        } else {
+          setCurCol(0);
+          setCurRow(curRow + 1);
+        }
+      }
+    }
+
     return (
     <div>
       <div class="nav-bar">
@@ -54,8 +103,8 @@ function Gamepage() {
         </span>
       </div>
       <div id="Keys">
-        <Gameboard />
-        <Keyboard />
+        <Gameboard letters={letters}/>
+        <Keyboard handleClick={handleClick} handleBackspace={handleBackspace} handleEnter={handleEnter} curRow={curRow} curCol={curCol}/>
       </div>
     </div>
     )
