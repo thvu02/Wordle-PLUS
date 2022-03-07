@@ -1,5 +1,10 @@
 {
   "dependencies": {
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "jfile": "^1.1.12",
+    "mongoose": "^6.2.1",
+    "nodemon": "^2.0.15"
   }
 }
