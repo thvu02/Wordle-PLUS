@@ -114,9 +114,24 @@ function keyColors(keyboard, guess, answer) {
     return keyboard;
 }
 
+/* Takes array of colors of the guess letters and
+returns true if the player won the game.
+Pass in the result of keyColors. */
+function wonGame(boxColors) {
+    var result = true;
+    for (let i in boxColors) {
+        if (boxColors[i] != "green") {
+            result = false;
+            break;
+        }
+    }
+    return result;
+}
+
 
 export {
     isValidWord,
     correctLetters,
-    keyColors
+    keyColors,
+    wonGame
 };
