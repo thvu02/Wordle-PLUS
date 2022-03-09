@@ -18,6 +18,13 @@
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4"
   },
+
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
