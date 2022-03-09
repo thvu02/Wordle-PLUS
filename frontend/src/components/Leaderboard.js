@@ -1,15 +1,94 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Leaderboard.css';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 
+import { BASE_URL } from ".././config.js";
 import Table from 'react-bootstrap/Table';
+import axios from 'axios';
 
-function Leaderboard() {
+class Leaderboard extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      info: []
+    }
+  }
+
+  handleClick() {
+    console.log('click happened');
+  }
+
+  getServerData(url, stateName) {
+    console.log(1)
+    axios.get(url)
+      .then(( {data} ) => {
+        this.setState({ [stateName]: data });
+        console.log(this.state.info);
+      })
+  }
+  // https://fcctop100.herokuapp.com/api/fccusers/top/recent
+  // http://localhost:5000
+  componentDidMount() {
+    this.getServerData('http://localhost:5000', "info");
+  };
+
+  render () {
+    const { info } = this.state;
+    return (
+      <div>
+
+      <div classname = "threeButtons">
+          <button id = "option1" onClick={this.handleClick} dataType='4'>4 Letters</button>
+          <button id = "option2" onClick={this.handleClick} dataType='5'>5 Letters</button>
+          <button id = "option3" onClick={this.handleClick} dataType='6'>6 Letters</button>
+        </div>
+
+        <div className = "leaderboardTable">
+          <Table striped bordered condensed hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                info.map((row, index) => (
+                <tr key={row.playerName}>
+                  <td>{index + 1}</td>
+                  <td>{row.playerName}</td>
+                </tr>
+                ))
+              }
+            </tbody>
+          </Table>
+        </div>
+
+      </div>
+    );
+  }
+}
+// export default Leaderboard;
+
+
+
+
+
+/* function Leaderboard() {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
   
+  const handleClick = (e) => {
+    console.log(e.target)
+  }
+  
+
   return (
     <div>
       <div class="nav-bar">
@@ -44,13 +123,26 @@ function Leaderboard() {
               <p> A new WORDLE will be available each day! </p> 
             </Modal.Body>
           </Modal>
-        </span> 
+        </span>
         <span >
           <p id ="c-nav-item">CS35L</p>
-        </span>   
+        </span>
         <span id ="r-nav-item">
           <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
         </span>
+        
+        <span id ="r-nav-item">
+          <button id = "r-button" onClick={() => {
+            this.props.navigation.navigate('YourScreen')
+          }}></button>
+        </span>
+
+      </div>
+
+      <div classname = "threeButtons">
+        <button id = "option1" onClick={handleClick} dataType='4'>4 Letters</button>
+        <button id = "option2" onClick={handleClick} dataType='5'>5 Letters</button>
+        <button id = "option3" onClick={handleClick} dataType='6'>6 Letters</button>
       </div>
 
       <div className = "leaderboardTable">
@@ -70,127 +162,26 @@ function Leaderboard() {
               <td></td>
               <td></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>11</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>13</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>14</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>15</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>16</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>17</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>18</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>19</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>20</td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
           </tbody>
         </Table>
       </div>
-
     </div>
     )
-}
+} */
 
 export default Leaderboard;
 
+
+
+// class MyBackButton extends React.Component {
+//   render() {
+//     // Get it from props
+//     const { navigation } = this.props;
+//   }
+// }
+
+// // Wrap and export
+// export default function(props) {
+//   const navigation = useNavigation();
+
+//   return <MyBackButton {...props} navigation={navigation} />;
