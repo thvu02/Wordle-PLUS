@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-import {isValidWord} from '../check-words.mjs';
+// import {isValidWord} from '../check-words.mjs';
 
 function Gamepage() {
     // definitions of state
