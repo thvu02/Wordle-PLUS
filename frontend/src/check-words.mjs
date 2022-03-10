@@ -4,6 +4,7 @@ import fs from 'fs';
 /* Returns a bool representing whether word is a valid guess
  given the wordLength being guessed from (number of boxes) */
 function isValidWord(word, wordLength) {
+    console.log("isvalidword being called!");
     if (word.length != wordLength) {
         return false;
     } else {

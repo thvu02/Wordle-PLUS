@@ -3,11 +3,11 @@ import './Gamepage.css';
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
-import Keyboard from './Keyboard'
-import Gameboard from './Gameboard'
+import Keyboard from './Keyboard';
+import Gameboard from './Gameboard';
+import {isValidWord} from '../check-words.mjs';
 
 function Gamepage() {
-
     // definitions of state
     const [curRow, setCurRow] = useState(0);
     const [curCol, setCurCol] = useState(0);
@@ -20,6 +20,7 @@ function Gamepage() {
       [null, null, null, null, null],
     ]);
     const [show, setShow] = useState(false);
+    const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
 
     // handleClick handles a regular letter press on the keyboard
@@ -27,11 +28,12 @@ function Gamepage() {
       // create a copy of the state of letters
       const lettersConst = [...letters];
       lettersConst[row][col] = input;
+      // do nothing if we are on the last column
       if (curCol === 5) {
         return;
-      } else {
-        setCurCol(curCol + 1);
       }
+      // otherwise setLetters and setCurWord accordingly
+      setCurCol(curCol + 1);
       setLetters(lettersConst);
     }
 
@@ -47,13 +49,35 @@ function Gamepage() {
       }
     }
 
-    // handle handles when a key is pressed
+    // handleEnter handles when the enter key is pressed on the keyboard
+    function handleEnter(row, col) {
+    // Return early if we aren't at 5 letters yet
+      if (col !== 5) {
+        return;
+      } else {
+        // Get the current row's word
+        let word = "";
+        for (let i = 0; i < 5; i++) {
+          word += letters[row][i];
+        }
+        // Return early if the word isn't valid
+        // PLACEHOLDER UNTIL FUNCTION THAT CHECKS IF WORK IS VALID IS IMPLEMENTED
+        if (true) {
+          setShowInvalid(true);
+          return;
+        }
+        // Restart column, row and (word?) if valid
+        setCurCol(0);
+        setCurRow(curRow + 1);
+      }
+    }
+
+    // handleKeypress handles when a key is pressed
     function handleKeypress(event) {
       const lettersConst = [...letters];
       // check cases for special key presses
       if (event.code === "Enter") {
-        // PLACEHOLDER until a new function is added that checks if the word is valid 
-        handleEnter(curRow, curCol, "worde");
+        handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -69,19 +93,6 @@ function Gamepage() {
           setCurCol(curCol + 1);
         }
         setLetters(lettersConst);
-      }
-    }
-
-    // handleEnter handles when the enter key is pressed on the keyboard
-    function handleEnter(row, col, word) {
-      // PLACEHOLDER until a new function is added that checks if the word is valid
-      if (true) {
-        if (col !== 5) {
-          return;
-        } else {
-          setCurCol(0);
-          setCurRow(curRow + 1);
-        }
       }
     }
 
@@ -123,6 +134,11 @@ function Gamepage() {
         </span> 
         <span >
           <p id ="c-nav-item">CS35L</p>
+          <Modal size="lg" show={showInvalid} onHide={() => setShowInvalid(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Please enter a valid word!</Modal.Title>
+            </Modal.Header>
+          </Modal>
         </span>   
         <span id ="r-nav-item">
           <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
