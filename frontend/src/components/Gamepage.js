@@ -20,6 +20,7 @@ function Gamepage() {
       [null, null, null, null, null],
     ]);
     const [show, setShow] = useState(false);
+    const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
 
     // handleClick handles a regular letter press on the keyboard
@@ -60,7 +61,9 @@ function Gamepage() {
           word += letters[row][i];
         }
         // Return early if the word isn't valid
-        if (!isValidWord(word, 5)) {
+        // PLACEHOLDER UNTIL FUNCTION THAT CHECKS IF WORK IS VALID IS IMPLEMENTED
+        if (true) {
+          setShowInvalid(true);
           return;
         }
         // Restart column, row and (word?) if valid
@@ -74,7 +77,6 @@ function Gamepage() {
       const lettersConst = [...letters];
       // check cases for special key presses
       if (event.code === "Enter") {
-        // PLACEHOLDER until a new function is added that checks if the word is valid 
         handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
@@ -132,6 +134,11 @@ function Gamepage() {
         </span> 
         <span >
           <p id ="c-nav-item">CS35L</p>
+          <Modal size="lg" show={showInvalid} onHide={() => setShowInvalid(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Please enter a valid word!</Modal.Title>
+            </Modal.Header>
+          </Modal>
         </span>   
         <span id ="r-nav-item">
           <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
