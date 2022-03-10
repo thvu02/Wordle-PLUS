@@ -8,16 +8,13 @@ import Gamepage from './components/Gamepage';
 import Leaderboard from './components/Leaderboard';
 import Infopage from './components/Infopage'
 import { BrowserRouter, Routes, Route} from "react-router-dom";
+import {useState} from 'react';
+import App from './App';
 
 ReactDOM.render(
-  <BrowserRouter>
-  <Routes>
-    <Route path = "/" element={<Homepage />} />
-    <Route path = "Leaderboard" element={<Leaderboard />} />
-    <Route path = "Infopage" element={<Infopage />} />
-    <Route path = "Gamepage" element={<Gamepage />} />
-  </Routes>
-  </BrowserRouter>,
+  <React.StrictMode>
+        <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
