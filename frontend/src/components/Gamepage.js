@@ -34,9 +34,6 @@ function Gamepage() {
       // otherwise setLetters and setCurWord accordingly
       setCurCol(curCol + 1);
       setLetters(lettersConst);
-      console.log(letters);
-      console.log(curCol);
-      console.log(curRow);
     }
 
     // handleBackspace handles when the backspace key is clicked
@@ -53,10 +50,8 @@ function Gamepage() {
 
     // handleEnter handles when the enter key is pressed on the keyboard
     function handleEnter(row, col) {
-    console.log("handleEnter called");
     // Return early if we aren't at 5 letters yet
       if (col !== 5) {
-        console.log("col != 5");
         return;
       } else {
         // Get the current row's word
@@ -66,10 +61,8 @@ function Gamepage() {
         }
         // Return early if the word isn't valid
         if (!isValidWord(word, 5)) {
-          console.log("isValidWord called and word was confirmed invalid");
           return;
         }
-        console.log("valid word");
         // Restart column, row and (word?) if valid
         setCurCol(0);
         setCurRow(curRow + 1);
