@@ -149,6 +149,7 @@ top: 15px;
 }
 
 #Gamegrid {
+position:absolute;
 bottom: 240px;
 margin-right: auto;
 margin-left: auto;

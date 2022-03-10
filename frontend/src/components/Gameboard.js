@@ -1,6 +1,7 @@
 import React from 'react';
 import './Gameboard.css';
 import Square from './Square';
+import {useState} from 'react';
 
 function Gameboard(props) {
 
