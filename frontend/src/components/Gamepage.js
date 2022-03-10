@@ -83,7 +83,7 @@ function Gamepage() {
         handleBackspace(curRow, curCol);
       }
       // validate key press to only allow letters
-      else if ((event.code[3]).match(/[a-z]/i)) {
+      else if ((event.code[3]).match(/[A-Z]/i) && ((event.code).length === 4)) {
         if (curCol === 5) {
           // letter not added if row already full
           return;
