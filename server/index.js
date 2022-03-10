@@ -29,10 +29,9 @@ app.post('/addname', async (req, res) => {
 
 app.get("/", async (req, res) => {
   User.find({})
-    .then((data) => console.log(data))
+    .then((data) => res.status(200).json(data))
     .catch((err) => console.log(err));
 });
-
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");
