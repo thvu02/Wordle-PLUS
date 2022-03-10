@@ -25,26 +25,27 @@ class Leaderboard extends Component {
   handleClick() {
     console.log('click happened');
   }
-
-  getServerData() {
-    console.log("hello world");
-    axios.get("/");
-  }
     
   componentDidMount() {
     axios.get('/')
       .then(res => {
         const data = res.data;
-        data.sort((a,b) => {
-          return a.name < b.name;
+        data.sort((a,b) => (a.playerName > b.playerName) ? 1 : ((b.playerName > a.playerName) ? -1 : 0));
+        this.setState({ data: data });
+        this.state.data.forEach((e) => {
+          console.log(`${e.playerName}`);
         });
-        this.setState({ data: res.data });
       })
   };
 
   render () {
+    // let x = [].concat(this.state.data).sort((a,b) => a.firstName < b.firstName ? 1 : -1).map((e) => (
+        
+    // ));
     const { data } = this.state;
     return (
+      
+
       <div>
 
       <div classname = "threeButtons">
@@ -65,9 +66,8 @@ class Leaderboard extends Component {
             </thead>
             <tbody>
               {
-                
                 data.map((row, index) => (
-                <tr key={row.playerName}>
+                <tr>
                   <td>{index + 1}</td>
                   <td>{row.playerName}</td>
                 </tr>
