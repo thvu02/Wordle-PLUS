@@ -1,5 +1,6 @@
 #gameboard {
-    text-align: center
+    text-align: center;
+    margin-top: 5.5%;
 }
 
 #block_display {
