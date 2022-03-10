@@ -49,6 +49,31 @@ function Gamepage() {
       }
     }
 
+    // handle handles when a key is pressed
+    function handleKeypress(event) {
+      const lettersConst = [...letters];
+      // check cases for special key presses
+      if (event.code == "Enter") {
+        // PLACEHOLDER until a new function is added that checks if the word is valid 
+        handleEnter(curRow, curCol, "worde");
+      }
+      else if (event.code == "Backspace") {
+        handleBackspace(curRow, curCol);
+      }
+      // validate key press to only allow letters
+      else if ((event.code[3]).match(/[a-z]/i)) {
+        if (curCol === 5) {
+          // letter not added if row already full
+          return;
+        } else {
+          // add entered letter (KeyM) so [3]
+          lettersConst[curRow][curCol] = event.code[3];
+          setCurCol(curCol + 1);
+        }
+        setLetters(lettersConst);
+      }
+    }
+
     // handleEnter handles when the enter key is pressed on the keyboard
     function handleEnter(row, col) {
     // Return early if we aren't at 5 letters yet

@@ -157,6 +157,15 @@ left: 0px;
 right: 0px;
 }
 
+#Gamegrid {
+  position:absolute;
+  top:101px;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0px;
+  right: 0px;
+}
+
 #Keys {
 /* Centering the Keyboard to the bottom of the page */
 position:absolute;
