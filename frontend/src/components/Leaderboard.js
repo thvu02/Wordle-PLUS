@@ -39,13 +39,8 @@ class Leaderboard extends Component {
   };
 
   render () {
-    // let x = [].concat(this.state.data).sort((a,b) => a.firstName < b.firstName ? 1 : -1).map((e) => (
-        
-    // ));
     const { data } = this.state;
     return (
-      
-
       <div>
 
       <div classname = "threeButtons">
