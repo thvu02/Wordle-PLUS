@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
+import { isValidWord } from '../check-words.mjs';
 // import {isValidWord} from '../check-words.mjs';
 
 function Gamepage() {
@@ -87,7 +88,7 @@ function Gamepage() {
         }
         // Return early if the word isn't valid
         // PLACEHOLDER UNTIL FUNCTION THAT CHECKS IF WORK IS VALID IS IMPLEMENTED
-        if (true) {
+        if (!isValidWord(word,5)) {
           setShowInvalid(true);
           return;
         }
