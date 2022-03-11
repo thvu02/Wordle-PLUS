@@ -97,7 +97,7 @@ margin: 20px;
 #green {
 height: 60px;
 width: 60px;
-border: 2px solid Green;
+border: 2px solid #bebebe;
 color: black;
 background-color:Green;
 
@@ -112,7 +112,7 @@ margin-bottom: 3px;
 #yellow {
 height: 60px;
 width: 60px;
-border: 2px solid yellow;
+border: 2px solid #bebebe;
 color: black;
 background-color: yellow;
 
@@ -127,7 +127,7 @@ margin-bottom: 3px;
 #gray {
 height: 60px;
 width: 60px;
-border: 2px solid gray;
+border: 2px solid #bebebe;
 color: black;
 background-color:gray;
 
@@ -163,7 +163,7 @@ right: 0px;
 
 #Gamegrid {
   position:absolute;
-  top:71px;
+  top:120px;
   margin-right: auto;
   margin-left: auto;
   left: 0px;
@@ -178,4 +178,11 @@ margin-right: auto;
 margin-left: auto;
 left: 0px;
 right: 0px;
+}
+
+#l-b {
+  background-color: rgba(124, 212, 136, 0.568);
+  width: 20%;
+  margin-right: 40%;
+  margin-left: 40%;
 }

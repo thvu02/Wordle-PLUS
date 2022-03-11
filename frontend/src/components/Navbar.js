@@ -25,8 +25,7 @@ function Navbar()
               Each Guess must be a valid word. Hit the enter button to submit.
               <br />
               After each guess, the color of the tiles will change to show how close your guess was to the word.
-              <br /> <br />
-              Please enter your name and select the difficulty to PLAY the game!
+              <br /> 
               </p> 
               <hr id="line" />
               <div id="display-flex">

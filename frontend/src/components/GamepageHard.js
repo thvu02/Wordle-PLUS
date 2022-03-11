@@ -200,7 +200,7 @@ function handleEnter(row, col) {
                 <p id="txt"> The letter G is not in the word in any spot. </p> 
               </div>
               <hr id="line" />
-              <p> A new WORD TO GUESS will be available for every gameplay! </p> 
+              <p> A new WORDLE will be available for every gameplay! </p> 
             </Modal.Body>
           </Modal>
         </span> 
@@ -208,8 +208,11 @@ function handleEnter(row, col) {
           <p id ="c-nav-item">CS35L</p>
           <Modal size="lg" show={showInvalid} onHide={() => setShowInvalid(false)}>
             <Modal.Header closeButton>
-              <Modal.Title>Please enter a valid word!</Modal.Title>
+              <Modal.Title>Invalid word</Modal.Title>
             </Modal.Header>
+            <Modal.Body>
+              <p>Please enter a valid word!</p>
+            </Modal.Body>
           </Modal>
           <Modal size="lg" show={showWin} onHide={() => setShowWin(false)}>
             <Modal.Header closeButton>
@@ -217,7 +220,7 @@ function handleEnter(row, col) {
             </Modal.Header>
             <Modal.Body>
               <p>You guessed the correct word, {oldCorrectWord}!</p>
-                <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
+                <button id="l-b" onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
           <Modal size="lg" show={showLoss} onHide={() => setShowLoss(false)}>
@@ -226,7 +229,7 @@ function handleEnter(row, col) {
             </Modal.Header>  
             <Modal.Body>
               <p>The correct word was {oldCorrectWord}</p>
-              <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
+              <button id="l-b" onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
         </span>   
