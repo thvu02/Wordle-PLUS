@@ -23,6 +23,7 @@ function Gamepage() {
     const [show, setShow] = useState(false);
     const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
+    const correctWord = "HELL";
 
     // handleClick handles a regular letter press on the keyboard
     function handleClick(row, col, input) {
@@ -91,9 +92,19 @@ function Gamepage() {
           setShowInvalid(true);
           return;
         }
-        // Restart column, row and (word?) if valid
-        setCurCol(0);
-        setCurRow(curRow + 1);
+        // Check if the word is the same as the win condition
+        if (word == correctWord) {
+          console.log("game won!");
+        } 
+        // Check if we are on the last row to know if we lost the game
+        else if (curRow === 5) {
+          console.log("game lost");
+        }
+        // Else restart the column and row if the word was valid but the game was neither won/lost on word
+        else {
+          setCurCol(0);
+          setCurRow(curRow + 1);
+        }        
       }
     }
 
