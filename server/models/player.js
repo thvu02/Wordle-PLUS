@@ -11,9 +11,6 @@ const userSchema = new schema({
     },
     gameVersion: {
         type: String,
-    },
-    status: {
-        type: String,
     }
 })
 
