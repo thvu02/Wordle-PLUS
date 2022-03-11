@@ -5,8 +5,10 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-import { isValidWord } from '../check-words.mjs';
-// import {isValidWord} from '../check-words.mjs';
+import { isValidWord, getRandomWord } from '../check-words.mjs';
+
+let correctWord = getRandomWord(6).toUpperCase();
+console.log(correctWord);
 
 function Gamepage() {
     // definitions of state
@@ -22,8 +24,9 @@ function Gamepage() {
     ]);
     const [show, setShow] = useState(false);
     const [showInvalid, setShowInvalid] = useState(false);
+    const [showWin, setShowWin] = useState(false);
+    const [showLoss, setShowLoss] = useState(false);
     const navigate = useNavigate();
-    const correctWord = "YELLOW";
 
     // handleClick handles a regular letter press on the keyboard
     function handleClick(row, col, input) {
@@ -95,10 +98,16 @@ function Gamepage() {
         // Check if the word is the same as the win condition
         if (word == correctWord) {
           console.log("game won!");
+          correctWord = getRandomWord(6).toUpperCase();
+          console.log(correctWord);
+          setShowWin(true);
         } 
         // Check if we are on the last row to know if we lost the game
         else if (curRow === 5) {
           console.log("game lost");
+          correctWord = getRandomWord(6).toUpperCase();
+          console.log(correctWord);
+          setShowLoss(true);
         }
         // Else restart the column and row if the word was valid but the game was neither won/lost on word
         else {
@@ -150,6 +159,22 @@ function Gamepage() {
             <Modal.Header closeButton>
               <Modal.Title>Please enter a valid word!</Modal.Title>
             </Modal.Header>
+          </Modal>
+          <Modal size="lg" show={showWin} onHide={() => setShowWin(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Congratulations!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <button onClick={() => navigate('/')}>Back to main menu</button>
+            </Modal.Body>
+          </Modal>
+          <Modal size="lg" show={showLoss} onHide={() => setShowLoss(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Better luck next time!</Modal.Title>  
+            </Modal.Header>  
+            <Modal.Body>
+              <button onClick={() => navigate('/')}>Back to main menu</button>
+            </Modal.Body>
           </Modal>
         </span>   
         <span id ="r-nav-item">
