@@ -40,8 +40,8 @@ function Homepage()
             <Modal.Body class="modal-txt">
               <p id = "text1">
               Guesses the WORDLE in six tries.
-              <br />
-              Each Guess must be a valid five-letter word. Hit the enter button to submit.
+              <br/>
+              Each Guess must be a valid word. Hit the enter button to submit.
               <br />
               After each guess, the color of the tiles will change to show how close your guess was to the word.
               </p> 

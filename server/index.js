@@ -3,7 +3,6 @@ import 'dotenv/config';
 import express from 'express';
 const app = express();
 import cors from 'cors';
-import bodyParser from 'body-parser';
 import User from './models/player.js';
 
 const url = process.env.MONGO_DB_URI

@@ -20,7 +20,7 @@ function Infopage() {
             <p id = "text1">
             Guesses the WORDLE in six tries.
             <br />
-            Each Guess must be a valid five-letter word. Hit the enter button to submit.
+            Each Guess must be a valid word. Hit the enter button to submit.
             <br />
             After each guess, the color of the tiles will change to show how close your guess was to the word.
             </p> 
@@ -70,27 +70,27 @@ function Infopage() {
     <div className= "display_inline">
       <p id = "text box">
         Chandaralong Phe <br/>
-        "Chandaralong" <br/>
+        "C" <br/>
         (dylanphe@g.ucla.edu)
       </p>
       <p id = "text box">
         Lorn Hin Adrian Lam <br/>
-        "Adrian" <br/>
+        "A" <br/>
         (adrianlam@g.ucla.edu)
       </p>
       <p id = "text box">
         Nicholas Hamakami <br/>
-        "Nick" <br/>
+        "N" <br/>
         (nhamakami@g.ucla.edu)
       </p>
       <p id = "text box">
         Nathaniel Webster  <br/>
-        "Nate" <br/>
+        "N" <br/>
         (natewebsterm@g.ucla.edu)
       </p>
       <p id = "text box">
         Trung Vu <br/>
-        "Trung" <br/>
+        "T" <br/>
         (trungvu08@g.ucla.edu)
       </p>
     </div>
