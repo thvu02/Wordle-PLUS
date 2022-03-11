@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
+import { isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(4).toUpperCase();
 console.log(correctWord);
@@ -87,7 +87,8 @@ function Gamepage() {
       const lettersConst = [...letters];
       // check cases for special key presses
       if (event.code === "Enter") {
-        handleEnter(curRow, curCol);
+        // PLACEHOLDER until a new function is added that checks if the word is valid 
+        handleEnter(curRow, curCol, "worde");
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -159,6 +160,7 @@ function handleEnter(row, col) {
           setCurRow(curRow + 1);
         }
       }
+    }
 
       for (let k = 0; k < 4; k++) {
         var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
@@ -203,7 +205,7 @@ function handleEnter(row, col) {
                 <p id="txt"> The letter G is not in the word in any spot. </p> 
               </div>
               <hr id="line" />
-              <p> A new WORDLE will be available each day! </p> 
+              <p> A new WORD TO GUESS will be available for every gameplay! </p> 
             </Modal.Body>
           </Modal>
         </span> 
@@ -219,7 +221,7 @@ function handleEnter(row, col) {
               <Modal.Title>Congratulations!</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <button onClick={() => navigate('/')}>Back to main menu</button>
+                <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
           <Modal size="lg" show={showLoss} onHide={() => setShowLoss(false)}>
@@ -227,7 +229,7 @@ function handleEnter(row, col) {
               <Modal.Title>Better luck next time!</Modal.Title>  
             </Modal.Header>  
             <Modal.Body>
-              <button onClick={() => navigate('/')}>Back to main menu</button>
+              <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
         </span>   

@@ -38,7 +38,7 @@ function Infopage() {
               <p id="txt"> The letter G is not in the word in any spot. </p> 
             </div>
             <hr id="line" />
-            <p> A new WORDLE will be available each day! </p> 
+            <p> A new WORDLE will be available for every gameplay! </p> 
           </Modal.Body>
         </Modal>
       </span> 
@@ -53,12 +53,6 @@ function Infopage() {
       <p id = "group_name">|| C.A.N.N.T ||</p>
       <hr />
       <span id ="block_display">
-          <button id="fake" > F </button>
-          <button id="fake" > A </button>
-          <button id="fake" > K </button>
-          <button id="fake" > E </button>
-      </span>
-      <span id ="block_display">
           <button id="title1"> W </button>
           <button id="title1" > O </button>
           <button id="title1" > R </button>
@@ -66,6 +60,12 @@ function Infopage() {
           <button id="title1" > L </button>
           <button id="title1" > E </button>
        </span>
+       <span id ="block_display">
+          <button id="fake" > P </button>
+          <button id="fake" > L </button>
+          <button id="fake" > U </button>
+          <button id="fake" > S </button>
+      </span>
     </div>
     <div className= "display_inline">
       <p id = "text box">
