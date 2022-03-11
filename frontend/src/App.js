@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import Homepage from './Homepage';
 import Gamepage from './components/Gamepage';
+import GamepageEasy from './components/GamepageEasy';
+import GamepageHard from './components/GamepageHard';
 import Leaderboard from './components/Leaderboard';
 import Infopage from './components/Infopage'
 import { BrowserRouter, Routes, Route} from "react-router-dom";
@@ -16,6 +18,8 @@ function App() {
           <Route path = "Leaderboard" element={<Leaderboard />} />
           <Route path = "Infopage" element={<Infopage />} />
           <Route path = "Gamepage" element={<Gamepage />} />
+          <Route path = "GamepageEasy" element={<GamepageEasy />} />
+          <Route path = "GamepageHard" element={<GamepageHard />} />
         </Routes>
         </BrowserRouter>
     )
