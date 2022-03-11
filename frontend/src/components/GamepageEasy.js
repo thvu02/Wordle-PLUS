@@ -87,7 +87,6 @@ function Gamepage() {
           word += letters[row][i];
         }
         // Return early if the word isn't valid
-        // PLACEHOLDER UNTIL FUNCTION THAT CHECKS IF WORK IS VALID IS IMPLEMENTED
         if (!isValidWord(word,4)) {
           setShowInvalid(true);
           return;
