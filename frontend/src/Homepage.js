@@ -6,6 +6,9 @@ import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 
+let PLAYER_NAME = "";
+let GAME_MODE = "";
+
 const axios = Axios.create({
   baseURL: BASE_URL,
 });
@@ -23,6 +26,8 @@ function Homepage()
       return;
     } else {
       axios.post("/addname", {playerName});
+      PLAYER_NAME = playerName;
+      GAME_MODE = "Medium";
       navigate('Gamepage');
     }
   }
@@ -33,6 +38,8 @@ function Homepage()
       return;
     } else {
       axios.post("/addnameE", {playerName});
+      PLAYER_NAME = playerName;
+      GAME_MODE = "Easy";
       navigate('GamepageEasy');
     }
   }
@@ -43,6 +50,8 @@ function Homepage()
       return;
     } else {
       axios.post("/addnameH", {playerName});
+      PLAYER_NAME = playerName;
+      GAME_MODE = "Hard";
       navigate('GamepageHard');
     }
   }
@@ -121,6 +130,7 @@ function Homepage()
 }
 
 export default Homepage;
-
+export { PLAYER_NAME };
+export { GAME_MODE };
 
 

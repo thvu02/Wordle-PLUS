@@ -56,6 +56,15 @@ app.get("/", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.post("/updateProfile", async (req, res) => {
+  let temp = await User.findOne( { playerName: req.body.player_name, gameVersion: req.body.game_mode } );
+  temp.playerScore = req.body.player_score;
+  await temp.save();
+  console.log(temp.playerName);
+  console.log(temp.playerScore);
+  return;
+});
+
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });

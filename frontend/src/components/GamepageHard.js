@@ -7,6 +7,13 @@ import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
 import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
+import { PLAYER_NAME, GAME_MODE } from '../Homepage.js';
+import Axios from "axios";
+import { BASE_URL } from "./config.js";
+const axios = Axios.create({
+  baseURL: BASE_URL,
+});
+
 let correctWord = getRandomWord(6).toUpperCase();
 console.log(correctWord);
 let oldCorrectWord;
@@ -151,6 +158,12 @@ function handleEnter(row, col) {
           setShowWin(true);
           correctWord = getRandomWord(6).toUpperCase();
           console.log(correctWord);
+
+          let score = (600 - (curRow*100));
+          let player_score = `${score}`;
+          let player_name = PLAYER_NAME;
+          let game_mode = GAME_MODE;
+          axios.post("updateProfile", { player_name, game_mode, player_score });
         } 
         // Check if we are on the last row to know if we lost the game
         else if (curRow === 5) {
@@ -159,6 +172,12 @@ function handleEnter(row, col) {
           setShowLoss(true);
           correctWord = getRandomWord(6).toUpperCase();
           console.log(correctWord);
+
+          let score = 0;
+          let player_score = `${score}`;
+          let player_name = PLAYER_NAME;
+          let game_mode = GAME_MODE;
+          axios.post("updateProfile", { player_name, game_mode, player_score });
         }
         // Else restart the column and row if the word was valid but the game was neither won/lost on word
         else {
