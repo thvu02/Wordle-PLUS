@@ -27,6 +27,26 @@ function Homepage()
     }
   }
 
+  const handleSubmitEasy = (event) => {
+    if(!playerName) {
+      alert('Pleaser enter a name to play.');
+      return;
+    } else {
+      axios.post("/addnameE", {playerName});
+      navigate('GamepageEasy');
+    }
+  }
+
+  const handleSubmitHard = (event) => {
+    if(!playerName) {
+      alert('Pleaser enter a name to play.');
+      return;
+    } else {
+      axios.post("/addnameH", {playerName});
+      navigate('GamepageHard');
+    }
+  }
+
   return (
     <div>
       <div class="nav-bar">
@@ -86,9 +106,11 @@ function Homepage()
         </span>
         <form class = "name-box"> 
           <input type="text" name = "playername" value={playerName} onChange={(pname) => setPlayerName(pname.target.value)}  placeholder="Enter Your Name Here!"/>
-          <button id="submit" type="submit" name = "easy" onClick = {handleSubmit}>EASY</button>
-          <button id="submit" type="submit" name = "medium" onClick = {handleSubmit}>MEDIUM</button>
-          <button id="submit" type="submit" name = "hard" onClick = {handleSubmit}>HARD</button>
+          <div id= "display-flex-button">
+            <button id="submitE" type="submit" name = "easy" onClick = {handleSubmitEasy}>EASY</button>
+            <button id="submit" type="submit" name = "medium" onClick = {handleSubmit}>MEDIUM</button>
+            <button id="submitH" type="submit" name = "hard" onClick = {handleSubmitHard}>HARD</button>
+          </div>
         </form>
         <button id = "info-b" onClick={() => navigate('Infopage')}> || C.A.N.N.T || </button>
       </div>
