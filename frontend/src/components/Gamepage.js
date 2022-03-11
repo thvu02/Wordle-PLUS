@@ -5,7 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-import { isValidWord, getRandomWord } from '../check-words.mjs';
+
+import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(5).toUpperCase();
 console.log(correctWord);
@@ -22,6 +23,33 @@ function Gamepage() {
       [null, null, null, null, null],
       [null, null, null, null, null],
     ]);
+    var keyDict = {};
+    keyDict["A"] = "lightgray";
+    keyDict["B"] = "lightgray";
+    keyDict["C"] = "lightgray";
+    keyDict["D"] = "lightgray";
+    keyDict["E"] = "lightgray";
+    keyDict["F"] = "lightgray";
+    keyDict["G"] = "lightgray";
+    keyDict["H"] = "lightgray";
+    keyDict["I"] = "lightgray";
+    keyDict["J"] = "lightgray";
+    keyDict["K"] = "lightgray";
+    keyDict["L"] = "lightgray";
+    keyDict["M"] = "lightgray";
+    keyDict["N"] = "lightgray";
+    keyDict["O"] = "lightgray";
+    keyDict["P"] = "lightgray";
+    keyDict["Q"] = "lightgray";
+    keyDict["R"] = "lightgray";
+    keyDict["S"] = "lightgray";
+    keyDict["T"] = "lightgray";
+    keyDict["U"] = "lightgray";
+    keyDict["V"] = "lightgray";
+    keyDict["W"] = "lightgray";
+    keyDict["X"] = "lightgray";
+    keyDict["Y"] = "lightgray";
+    keyDict["Z"] = "lightgray";
     const [show, setShow] = useState(false);
     const [showInvalid, setShowInvalid] = useState(false);
     const [showWin, setShowWin] = useState(false);
@@ -59,8 +87,7 @@ function Gamepage() {
       const lettersConst = [...letters];
       // check cases for special key presses
       if (event.code === "Enter") {
-        // PLACEHOLDER until a new function is added that checks if the word is valid 
-        handleEnter(curRow, curCol, "worde");
+        handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -91,10 +118,33 @@ function Gamepage() {
           word += letters[row][i];
         }
         // Return early if the word isn't valid
-        if (!isValidWord(word,5)) {
+        if (!(isValidWord(word,5))) {
           setShowInvalid(true);
           return;
         }
+        var new_keys = correctLetters(word,correctWord);
+        for (let i = 0; i < 5; i++) {
+          var elements = document.getElementsByClassName(word[i]); // adding colour to keyboard when selected
+          for (let j = 0; j < elements.length; j++) {
+            if (new_keys[i] == "green" || elements[j].style.backgroundColor == "green") {
+              elements[j].style.backgroundColor = "green";
+              break;
+            }
+            else if (new_keys[i] == "yellow" && elements[j].style.backgroundColor != "green") {
+              elements[j].style.backgroundColor = "yellow"; // Reduce redundancies and preventing overwriting previous attempts
+              break;
+            }
+            else {
+              elements[j].style.backgroundColor = "gray";
+            }
+          }
+        }
+
+        for (let k = 0; k < 5; k++) {
+          var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
+          elements[0].style.backgroundColor = new_keys[k];
+        }
+
         // Check if the word is the same as the win condition
         if (word == correctWord) {
           console.log("game won!");

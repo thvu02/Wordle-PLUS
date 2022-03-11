@@ -110,7 +110,7 @@ function keyColors(keyboard, guess, answer) {
                 keyboard[guess[i]] = "green";
                 break;
             case "yellow":
-                if (keyboard[guess[i]] == "gray") {
+                if (keyboard[guess[i]] == "lightgray") {
                     keyboard[guess[i]] = "yellow";
                 }
                 break;

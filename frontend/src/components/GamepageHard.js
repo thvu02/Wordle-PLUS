@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-import { isValidWord, getRandomWord } from '../check-words.mjs';
+import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(6).toUpperCase();
 console.log(correctWord);
@@ -27,7 +27,7 @@ function Gamepage() {
     const [showWin, setShowWin] = useState(false);
     const [showLoss, setShowLoss] = useState(false);
     const navigate = useNavigate();
-
+    
     // handleClick handles a regular letter press on the keyboard
     function handleClick(row, col, input) {
       // create a copy of the state of letters
@@ -60,7 +60,7 @@ function Gamepage() {
       // check cases for special key presses
       if (event.code === "Enter") {
         // PLACEHOLDER until a new function is added that checks if the word is valid 
-        handleEnter(curRow, curCol, "worde");
+        handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -79,21 +79,38 @@ function Gamepage() {
       }
     }
 
-    // handleEnter handles when the enter key is pressed on the keyboard
-    function handleEnter(row, col) {
-    // Return early if we aren't at 6 letters yet
-      if (col !== 6) {
+// handleEnter handles when the enter key is pressed on the keyboard
+function handleEnter(row, col) {
+  // Return early if we aren't at 6 letters yet
+    if (col !== 6) {
+      return;
+    } else {
+      // Get the current row's word
+      let word = "";
+      for (let i = 0; i < 6; i++) {
+        word += letters[row][i];
+      }
+      // Return early if the word isn't valid
+      if (!(isValidWord(word,6))) {
+        setShowInvalid(true);
         return;
-      } else {
-        // Get the current row's word
-        let word = "";
-        for (let i = 0; i < 6; i++) {
-          word += letters[row][i];
-        }
-        // Return early if the word isn't valid
-        if (!isValidWord(word,6)) {
-          setShowInvalid(true);
-          return;
+      }
+      
+      var new_keys = correctLetters(word,correctWord);
+      for (let i = 0; i < 6; i++) {
+        var elements = document.getElementsByClassName(word[i]); // adding colour to keyboard when selected
+        for (let j = 0; j < elements.length; j++) {
+          if (new_keys[i] == "green" || elements[j].style.backgroundColor == "green") {
+            elements[j].style.backgroundColor = "green";
+            break;
+          }
+          else if (new_keys[i] == "yellow" && elements[j].style.backgroundColor != "green") {
+            elements[j].style.backgroundColor = "yellow"; // Reduce redundancies and preventing overwriting previous attempts
+            break;
+          }
+          else {
+            elements[j].style.backgroundColor = "gray";
+          }
         }
         // Check if the word is the same as the win condition
         if (word == correctWord) {
@@ -115,7 +132,17 @@ function Gamepage() {
           setCurRow(curRow + 1);
         }
       }
+
+      for (let k = 0; k < 5; k++) {
+        var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
+        elements[0].style.backgroundColor = new_keys[k];
+      }
+
+      // Restart column, row and (word?) if valid
+      setCurCol(0);
+      setCurRow(curRow + 1);
     }
+  }
 
     return (
       // look for key pressed down and trigger keypress handler event [tabIndex necessary]
