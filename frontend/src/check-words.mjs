@@ -1,27 +1,30 @@
 
-import fs from 'fs';
+import {fiveLetters} from './five-letters.mjs';
+import {fourLetters} from './four-letters.mjs';
+import {sixLetters} from './six-letters.mjs';
 
 /* Returns a bool representing whether word is a valid guess
  given the wordLength being guessed from (number of boxes) */
 function isValidWord(word, wordLength) {
     console.log("isvalidword being called!");
+    word = word.toLowerCase();
     if (word.length != wordLength) {
         return false;
     } else {
-        var path;
+        var wordBank;
         // determine which word bank file to read from based on word length
         switch (wordLength) {
             case 4:
-                path = '../../wordbank/fourLetters.txt';
+                wordBank = fourLetters;
                 break;
             case 6:
-                path = '../../wordbank/sixLetters.txt';
+                wordBank = sixLetters;
                 break;
             case 5:
             default:
-                path = '../../wordbank/fiveLetters.txt';
+                wordBank = fiveLetters;
         }
-        const wordBank = fs.readFileSync(path, "utf8");
+        
         if (wordBank.includes(word)) {
             return true;
         } else {
