@@ -2,7 +2,7 @@
 
 ## Description
 
-FAKE WORDLE web app is an attempted by our team to recreate the famous WORDLE app officially run by The New York Times website. 
+FAKE WORDLE web app is an attempt by our team to recreate the famous WORDLE app officially run by The New York Times website. 
 
 In Fake Wordle, players have the option to play the game with either 4 letter word, 5 letter word or 6 letter word. Instruction is available to be viewed by simply clicking on the Instruction button appeared on top of the app.
 
