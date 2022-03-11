@@ -43,6 +43,8 @@ The app should be accessible at
 
 ### To setup the Backend:
 
+##### Open a second command line to run the backend server.
+
 ##### `cd server`
 
 ##### Create a .env file in the server folder. Add your mongodb uri to the .env file (which can be created at https://cloud.mongodb.com/) like the following:
