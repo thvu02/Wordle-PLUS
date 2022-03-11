@@ -9,6 +9,7 @@ import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(6).toUpperCase();
 console.log(correctWord);
+let oldCorrectWord;
 
 function Gamepage() {
     // definitions of state
@@ -115,16 +116,18 @@ function handleEnter(row, col) {
         // Check if the word is the same as the win condition
         if (word == correctWord) {
           console.log("game won!");
+          oldCorrectWord = correctWord;
+          setShowWin(true);
           correctWord = getRandomWord(6).toUpperCase();
           console.log(correctWord);
-          setShowWin(true);
         } 
         // Check if we are on the last row to know if we lost the game
         else if (curRow === 5) {
           console.log("game lost");
+          oldCorrectWord = correctWord;
+          setShowLoss(true);
           correctWord = getRandomWord(6).toUpperCase();
           console.log(correctWord);
-          setShowLoss(true);
         }
         // Else restart the column and row if the word was valid but the game was neither won/lost on word
         else {
@@ -192,6 +195,7 @@ function handleEnter(row, col) {
               <Modal.Title>Congratulations!</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+              <p>You guessed the correct word, {oldCorrectWord}!</p>
                 <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
@@ -200,6 +204,7 @@ function handleEnter(row, col) {
               <Modal.Title>Better luck next time!</Modal.Title>  
             </Modal.Header>  
             <Modal.Body>
+              <p>The correct word was {oldCorrectWord}</p>
               <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>

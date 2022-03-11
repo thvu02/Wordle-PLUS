@@ -9,6 +9,7 @@ import { isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(4).toUpperCase();
 console.log(correctWord);
+let oldCorrectWord;
 
 function Gamepage() {
     // definitions of state
@@ -60,7 +61,7 @@ function Gamepage() {
       // check cases for special key presses
       if (event.code === "Enter") {
         // PLACEHOLDER until a new function is added that checks if the word is valid 
-        handleEnter(curRow, curCol, "worde");
+        handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -98,16 +99,18 @@ function Gamepage() {
         // Check if the word is the same as the win condition
         if (word == correctWord) {
           console.log("game won!");
+          oldCorrectWord = correctWord;
+          setShowWin(true);
           correctWord = getRandomWord(4).toUpperCase();
           console.log(correctWord);
-          setShowWin(true);
         } 
         // Check if we are on the last row to know if we lost the game
         else if (curRow === 5) {
           console.log("game lost");
+          oldCorrectWord = correctWord;
+          setShowLoss(true);
           correctWord = getRandomWord(4).toUpperCase();
           console.log(correctWord);
-          setShowLoss(true);
         }
         // Else restart the column and row if the word was valid but the game was neither won/lost on word
         else {
@@ -165,6 +168,7 @@ function Gamepage() {
               <Modal.Title>Congratulations!</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                <p>You guessed the correct word, {oldCorrectWord}!</p>
                 <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
@@ -173,6 +177,7 @@ function Gamepage() {
               <Modal.Title>Better luck next time!</Modal.Title>  
             </Modal.Header>  
             <Modal.Body>
+              <p>The correct word was {oldCorrectWord}</p>
               <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
