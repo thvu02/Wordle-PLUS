@@ -80,7 +80,7 @@ function Homepage()
                 <p id="txt"> The letter G is not in the word in any spot. </p> 
               </div>
               <hr id="line" />
-              <p> A new WORD TO GUESS will be available for every gameplay! </p> 
+              <p> A new WORDLE will be available for every gameplay! </p> 
             </Modal.Body>
           </Modal>
         </span> 
