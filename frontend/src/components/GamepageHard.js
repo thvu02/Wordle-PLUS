@@ -10,7 +10,6 @@ import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 let correctWord = getRandomWord(6).toUpperCase();
 console.log(correctWord);
 let oldCorrectWord;
-alert(correctWord)
 
 function Gamepage() {
     // definitions of state
