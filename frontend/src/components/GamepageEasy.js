@@ -9,25 +9,53 @@ import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(4).toUpperCase();
 console.log(correctWord);
+alert(correctWord);
 
 function Gamepage() {
     // definitions of state
     const [curRow, setCurRow] = useState(0);
     const [curCol, setCurCol] = useState(0);
     const [letters, setLetters] = useState([
-      [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
-      [null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
+      [null, null, null, null, null, null],
     ]);
+    var keyDict = {};
+    keyDict["A"] = "lightgray";
+    keyDict["B"] = "lightgray";
+    keyDict["C"] = "lightgray";
+    keyDict["D"] = "lightgray";
+    keyDict["E"] = "lightgray";
+    keyDict["F"] = "lightgray";
+    keyDict["G"] = "lightgray";
+    keyDict["H"] = "lightgray";
+    keyDict["I"] = "lightgray";
+    keyDict["J"] = "lightgray";
+    keyDict["K"] = "lightgray";
+    keyDict["L"] = "lightgray";
+    keyDict["M"] = "lightgray";
+    keyDict["N"] = "lightgray";
+    keyDict["O"] = "lightgray";
+    keyDict["P"] = "lightgray";
+    keyDict["Q"] = "lightgray";
+    keyDict["R"] = "lightgray";
+    keyDict["S"] = "lightgray";
+    keyDict["T"] = "lightgray";
+    keyDict["U"] = "lightgray";
+    keyDict["V"] = "lightgray";
+    keyDict["W"] = "lightgray";
+    keyDict["X"] = "lightgray";
+    keyDict["Y"] = "lightgray";
+    keyDict["Z"] = "lightgray";
     const [show, setShow] = useState(false);
+    const [showInvalid, setShowInvalid] = useState(false);
     const [showWin, setShowWin] = useState(false);
     const [showLoss, setShowLoss] = useState(false);
-    const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
-
+    
     // handleClick handles a regular letter press on the keyboard
     function handleClick(row, col, input) {
       // create a copy of the state of letters
@@ -78,59 +106,38 @@ function Gamepage() {
       }
     }
 
-    // handleEnter handles when the enter key is pressed on the keyboard
-    function handleEnter(row, col) {
-    // Return early if we aren't at 4 letters yet
-      if (col !== 4) {
+// handleEnter handles when the enter key is pressed on the keyboard
+function handleEnter(row, col) {
+  // Return early if we aren't at 4 letters yet
+    if (col !== 4) {
+      return;
+    } else {
+      // Get the current row's word
+      let word = "";
+      for (let i = 0; i < 4; i++) {
+        word += letters[row][i];
+      }
+      // Return early if the word isn't valid
+      if (!(isValidWord(word,4))) {
+        setShowInvalid(true);
         return;
-      } else {
-        // Get the current row's word
-        let word = "";
-        for (let i = 0; i < 4; i++) {
-          word += letters[row][i];
-        }
-        // Return early if the word isn't valid
-        if (!isValidWord(word,4)) {
-          setShowInvalid(true);
-          return;
-        } else {
-          // Get the current row's word
-          let word = "";
-          for (let i = 0; i < 4; i++) {
-            word += letters[row][i];
+      }
+      
+      var new_keys = correctLetters(word,correctWord);
+      for (let i = 0; i < 4; i++) {
+        var elements = document.getElementsByClassName(word[i]); // adding colour to keyboard when selected
+        for (let j = 0; j < elements.length; j++) {
+          if (new_keys[i] == "green" || elements[j].style.backgroundColor == "green") {
+            elements[j].style.backgroundColor = "green";
+            break;
           }
-          // Return early if the word isn't valid
-          if (!(isValidWord(word,4))) {
-            setShowInvalid(true);
-            return;
+          else if (new_keys[i] == "yellow" && elements[j].style.backgroundColor != "green") {
+            elements[j].style.backgroundColor = "yellow"; // Reduce redundancies and preventing overwriting previous attempts
+            break;
           }
-          
-          var new_keys = correctLetters(word,correctWord);
-          for (let i = 0; i < 4; i++) {
-            var elements = document.getElementsByClassName(word[1]); // adding colour to keyboard when selected
-            for (let j = 0; j < elements.length; j++) {
-              if (new_keys[i] == "green" || elements[j].style.backgroundColor == "green") {
-                elements[j].style.backgroundColor = "green";
-                break;
-              }
-              else if (new_keys[i] == "yellow" && elements[j].style.backgroundColor != "green") {
-                elements[j].style.backgroundColor = "yellow"; // Reduce redundancies and preventing overwriting previous attempts
-                break;
-              }
-              else {
-                elements[j].style.backgroundColor = "gray";
-              }
-            }
+          else {
+            elements[j].style.backgroundColor = "gray";
           }
-  
-          for (let k = 0; k < 4; k++) {
-            var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
-            elements[0].style.backgroundColor = new_keys[k];
-          }
-  
-          // Restart column, row and (word?) if valid
-          setCurCol(0);
-          setCurRow(curRow + 1);
         }
         // Check if the word is the same as the win condition
         if (word == correctWord) {
@@ -150,8 +157,19 @@ function Gamepage() {
         else {
           setCurCol(0);
           setCurRow(curRow + 1);
-        }        
+        }
       }
+
+      for (let k = 0; k < 4; k++) {
+        var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
+        elements[0].style.backgroundColor = new_keys[k];
+      }
+
+      // Restart column, row and (word?) if valid
+      setCurCol(0);
+      setCurRow(curRow + 1);
+    }
+  }
 
     return (
       // look for key pressed down and trigger keypress handler event [tabIndex necessary]
@@ -167,7 +185,7 @@ function Gamepage() {
               <p id = "text1">
               Guesses the WORDLE in six tries.
               <br />
-              Each Guess must be a valid four-letter word. Hit the enter button to submit.
+              Each Guess must be a valid six-letters word. Hit the enter button to submit.
               <br />
               After each guess, the color of the tiles will change to show how close your guess was to the word.
               </p> 

@@ -5,10 +5,9 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-
 import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
-let correctWord = getRandomWord(5).toUpperCase();
+let correctWord = getRandomWord(4).toUpperCase();
 console.log(correctWord);
 
 function Gamepage() {
@@ -51,9 +50,9 @@ function Gamepage() {
     keyDict["Y"] = "lightgray";
     keyDict["Z"] = "lightgray";
     const [show, setShow] = useState(false);
-    const [showInvalid, setShowInvalid] = useState(false);
     const [showWin, setShowWin] = useState(false);
     const [showLoss, setShowLoss] = useState(false);
+    const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
 
     // handleClick handles a regular letter press on the keyboard
@@ -118,10 +117,11 @@ function Gamepage() {
           word += letters[row][i];
         }
         // Return early if the word isn't valid
-        if (!(isValidWord(word,5))) {
+        if (!isValidWord(word,5)) {
           setShowInvalid(true);
           return;
         }
+        
         var new_keys = correctLetters(word,correctWord);
         for (let i = 0; i < 5; i++) {
           var elements = document.getElementsByClassName(word[i]); // adding colour to keyboard when selected
@@ -145,30 +145,14 @@ function Gamepage() {
           elements[0].style.backgroundColor = new_keys[k];
         }
 
-        // Check if the word is the same as the win condition
-        if (word == correctWord) {
-          console.log("game won!");
-          correctWord = getRandomWord(5).toUpperCase();
-          console.log(correctWord);
-          setShowWin(true);
-        } 
-        // Check if we are on the last row to know if we lost the game
-        else if (curRow === 5) {
-          console.log("game lost");
-          correctWord = getRandomWord(5).toUpperCase();
-          console.log(correctWord);
-          setShowLoss(true);
-        }
-        // Else restart the column and row if the word was valid but the game was neither won/lost on word
-        else {
-          setCurCol(0);
-          setCurRow(curRow + 1);
-        }
+        // Restart column, row and (word?) if valid
+        setCurCol(0);
+        setCurRow(curRow + 1);
       }
     }
 
-    return (
-      // look for key pressed down and trigger keypress handler event [tabIndex necessary]
+  return (
+  // look for key pressed down and trigger keypress handler event [tabIndex necessary]
     <div tabIndex="0" onKeyDown={handleKeypress}>
       <div class="nav-bar">
         <span id="l-nav-item">
@@ -228,7 +212,7 @@ function Gamepage() {
           </Modal>
         </span>   
         <span id ="r-nav-item">
-          <button id = "r-button" onClick={() => navigate('/Leaderboard')}> LEADERBOARD </button>
+          <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
         </span>
       </div>
 
