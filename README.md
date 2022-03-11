@@ -28,6 +28,8 @@ Clone the Repository:
 
 ##### `cd CANNT`
 
+##### `npm install`
+
 ### To run the Frontend (React):
 
 ##### `cd frontend`
