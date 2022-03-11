@@ -53,11 +53,11 @@ function Gamepage() {
     function handleKeypress(event) {
       const lettersConst = [...letters];
       // check cases for special key presses
-      if (event.code == "Enter") {
+      if (event.code === "Enter") {
         // PLACEHOLDER until a new function is added that checks if the word is valid 
         handleEnter(curRow, curCol, "worde");
       }
-      else if (event.code == "Backspace") {
+      else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
       }
       // validate key press to only allow letters
@@ -94,30 +94,6 @@ function Gamepage() {
         // Restart column, row and (word?) if valid
         setCurCol(0);
         setCurRow(curRow + 1);
-      }
-    }
-
-    // handleKeypress handles when a key is pressed
-    function handleKeypress(event) {
-      const lettersConst = [...letters];
-      // check cases for special key presses
-      if (event.code === "Enter") {
-        handleEnter(curRow, curCol);
-      }
-      else if (event.code === "Backspace") {
-        handleBackspace(curRow, curCol);
-      }
-      // validate key press to only allow letters
-      else if ((event.code[3]).match(/[A-Z]/i) && ((event.code).length === 4)) {
-        if (curCol === 5) {
-          // letter not added if row already full
-          return;
-        } else {
-          // add entered letter (KeyM) so [3]
-          lettersConst[curRow][curCol] = event.code[3];
-          setCurCol(curCol + 1);
-        }
-        setLetters(lettersConst);
       }
     }
 
