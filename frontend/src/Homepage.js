@@ -80,7 +80,7 @@ function Homepage()
                 <p id="txt"> The letter G is not in the word in any spot. </p> 
               </div>
               <hr id="line" />
-              <p> A new WORDLE will be available each day! </p> 
+              <p> A new WORD TO GUESS will be available for every gameplay! </p> 
             </Modal.Body>
           </Modal>
         </span> 
@@ -93,18 +93,18 @@ function Homepage()
       </div>
       <div className = "mainpage">
         <span>
-          <button id="title-fake" > F </button>
-          <button id="title-fake" > A </button>
-          <button id="title-fake" > K </button>
-          <button id="title-fake" > E </button>
-        </span>
-        <span>
           <button id="title" > W </button>
           <button id="title" > O </button>
           <button id="title" > R </button>
           <button id="title" > D </button>
           <button id="title" > L </button>
           <button id="title" > E </button>
+        </span>
+        <span>
+          <button id="title-fake" > P </button>
+          <button id="title-fake" > L </button>
+          <button id="title-fake" > U </button>
+          <button id="title-fake" > S </button>
         </span>
         <form class = "name-box"> 
           <input type="text" name = "playername" value={playerName} onChange={(pname) => setPlayerName(pname.target.value)}  placeholder="Enter Your Name Here!"/>
