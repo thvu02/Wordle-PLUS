@@ -6,7 +6,7 @@ FAKE WORDLE web app is an attempt by our team to recreate the famous WORDLE app 
 
 In Fake Wordle, players have the option to play the game with either 4 letter word, 5 letter word or 6 letter word. Instruction is available to be viewed by simply clicking on the Instruction button appeared on top of the app.
 
-Player must enter a name and click on the PLAY button to play the game. After the game has been played, each player stats will be posted onto leaderboard, which include the rank and the score of each player. 
+Player must enter a name and click on one of the Difficulty button to play the game. After the game has been played, each player stats will be posted onto leaderboard, which include the rank and the score of each player. 
 
 ## Key Features
 
@@ -30,7 +30,7 @@ Clone the Repository:
 
 ##### `cd frontend`
 
-##### `npm install`
+##### `npm install react-scripts`
 
 ##### `npm start`
 

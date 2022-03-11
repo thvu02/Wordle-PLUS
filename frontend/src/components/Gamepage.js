@@ -142,7 +142,7 @@ function Gamepage() {
           </Modal>
         </span>   
         <span id ="r-nav-item">
-          <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
+          <button id = "r-button" onClick={() => navigate('/Leaderboard')}> LEADERBOARD </button>
         </span>
       </div>
 

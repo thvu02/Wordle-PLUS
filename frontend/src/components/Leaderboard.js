@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './Leaderboard.css';
-import { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import { useNavigate } from 'react-router-dom';
-
+import Navbar from './Navbar.js';
 import { BASE_URL } from ".././config.js";
 import Table from 'react-bootstrap/Table';
 import Axios from 'axios';
@@ -54,6 +51,7 @@ class Leaderboard extends Component {
     const { data, filterAssist } = this.state;
     return (
       <div>
+        <Navbar />
         <div classname="threeButtons">
           <button id="fourLetters" onClick={this.handleClick} data_id='4'>4 Letters</button>
           <button id="fiveLetters" onClick={this.handleClick} data_id='5'>5 Letters</button>
