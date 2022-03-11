@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-// import {isValidWord} from '../check-words.mjs';
+import { isValidWord } from '../check-words.mjs';
 
 function Gamepage() {
     // definitions of state
@@ -54,8 +54,7 @@ function Gamepage() {
       const lettersConst = [...letters];
       // check cases for special key presses
       if (event.code === "Enter") {
-        // PLACEHOLDER until a new function is added that checks if the word is valid 
-        handleEnter(curRow, curCol, "worde");
+        handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -87,7 +86,7 @@ function Gamepage() {
         }
         // Return early if the word isn't valid
         // PLACEHOLDER UNTIL FUNCTION THAT CHECKS IF WORK IS VALID IS IMPLEMENTED
-        if (true) {
+        if (!(isValidWord(word,4))) {
           setShowInvalid(true);
           return;
         }

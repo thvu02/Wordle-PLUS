@@ -5,7 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-// import {isValidWord} from '../check-words.mjs';
+import { correctLetters, isValidWord } from '../check-words.mjs';
+import { dailyWord5 } from '../daily-word.js';
 
 function Gamepage() {
     // definitions of state
@@ -54,8 +55,7 @@ function Gamepage() {
       const lettersConst = [...letters];
       // check cases for special key presses
       if (event.code === "Enter") {
-        // PLACEHOLDER until a new function is added that checks if the word is valid 
-        handleEnter(curRow, curCol, "worde");
+        handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -87,10 +87,18 @@ function Gamepage() {
         }
         // Return early if the word isn't valid
         // PLACEHOLDER UNTIL FUNCTION THAT CHECKS IF WORK IS VALID IS IMPLEMENTED
-        if (true) {
+        if (!(isValidWord(word,5))) {
           setShowInvalid(true);
           return;
         }
+        var newLetters = correctLetters(word, dailyWord5);
+        for (let i = 0; i < 5; i++) {
+          var letterGuessed = document.getElementsByClassName(word[i]);
+          alert(letterGuessed.style.backgroundColor);
+          letterGuessed.style.backgroundColor = newLetters[i];
+        }
+        alert(dailyWord5);
+        
         // Restart column, row and (word?) if valid
         setCurCol(0);
         setCurRow(curRow + 1);
