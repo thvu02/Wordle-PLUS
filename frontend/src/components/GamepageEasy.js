@@ -253,7 +253,7 @@ function handleEnter(row, col) {
           </Modal>
         </span>   
         <span id ="r-nav-item">
-          <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
+          <button id = "r-button" onClick={() => navigate('/')}>MAIN MENU</button>
         </span>
       </div>
 
