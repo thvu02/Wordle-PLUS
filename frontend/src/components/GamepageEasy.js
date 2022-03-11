@@ -12,12 +12,12 @@ function Gamepage() {
     const [curRow, setCurRow] = useState(0);
     const [curCol, setCurCol] = useState(0);
     const [letters, setLetters] = useState([
-      [null, null, null, null, null],
-      [null, null, null, null, null],
-      [null, null, null, null, null],
-      [null, null, null, null, null],
-      [null, null, null, null, null],
-      [null, null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
+      [null, null, null, null],
     ]);
     const [show, setShow] = useState(false);
     const [showInvalid, setShowInvalid] = useState(false);
@@ -29,7 +29,7 @@ function Gamepage() {
       const lettersConst = [...letters];
       lettersConst[row][col] = input;
       // do nothing if we are on the last column
-      if (curCol === 5) {
+      if (curCol === 4) {
         return;
       }
       // otherwise setLetters and setCurWord accordingly
@@ -62,7 +62,7 @@ function Gamepage() {
       }
       // validate key press to only allow letters
       else if ((event.code[3]).match(/[a-z]/i)) {
-        if (curCol === 5) {
+        if (curCol === 4) {
           // letter not added if row already full
           return;
         } else {
@@ -76,13 +76,13 @@ function Gamepage() {
 
     // handleEnter handles when the enter key is pressed on the keyboard
     function handleEnter(row, col) {
-    // Return early if we aren't at 5 letters yet
-      if (col !== 5) {
+    // Return early if we aren't at 4 letters yet
+      if (col !== 4) {
         return;
       } else {
         // Get the current row's word
         let word = "";
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 4; i++) {
           word += letters[row][i];
         }
         // Return early if the word isn't valid
@@ -109,7 +109,7 @@ function Gamepage() {
       }
       // validate key press to only allow letters
       else if ((event.code[3]).match(/[A-Z]/i) && ((event.code).length === 4)) {
-        if (curCol === 5) {
+        if (curCol === 4) {
           // letter not added if row already full
           return;
         } else {
@@ -171,7 +171,7 @@ function Gamepage() {
       </div>
 
       <div id="Gamegrid">
-      <Gameboard letters={letters} difficulty="medium"/>
+      <Gameboard letters={letters} difficulty="easy"/>
       </div>
       <div id="Keys">
         <Keyboard handleClick={handleClick} handleBackspace={handleBackspace} handleEnter={handleEnter} curRow={curRow} curCol={curCol}/>
