@@ -17,6 +17,8 @@ Player must enter a name and click on one of the Difficulty button to play the g
   5. The ability for Player to use their manual keyboard to input the letter into the gameboard instead of using the provided keyboard onscreen.
   6. The ability for Player to choose between playing the game with 4 letter words, 5 letter words or 6 letter words. The Word of the day will change based on the option you choose. 
   7. Leaderboard Page that search through server side data and display dynamic data such as player names, ranks and scores based on their stats after each players played the game.  
+  8. The ability for Player to play the game as many time as they want unlike WORDLE, which only allow you to play once.
+
 
 ## Running the Application
 
