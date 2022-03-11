@@ -20,6 +20,33 @@ function Gamepage() {
       [null, null, null, null, null],
       [null, null, null, null, null],
     ]);
+    var keyDict = {};
+    keyDict["A"] = "lightgray";
+    keyDict["B"] = "lightgray";
+    keyDict["C"] = "lightgray";
+    keyDict["D"] = "lightgray";
+    keyDict["E"] = "lightgray";
+    keyDict["F"] = "lightgray";
+    keyDict["G"] = "lightgray";
+    keyDict["H"] = "lightgray";
+    keyDict["I"] = "lightgray";
+    keyDict["J"] = "lightgray";
+    keyDict["K"] = "lightgray";
+    keyDict["L"] = "lightgray";
+    keyDict["M"] = "lightgray";
+    keyDict["N"] = "lightgray";
+    keyDict["O"] = "lightgray";
+    keyDict["P"] = "lightgray";
+    keyDict["Q"] = "lightgray";
+    keyDict["R"] = "lightgray";
+    keyDict["S"] = "lightgray";
+    keyDict["T"] = "lightgray";
+    keyDict["U"] = "lightgray";
+    keyDict["V"] = "lightgray";
+    keyDict["W"] = "lightgray";
+    keyDict["X"] = "lightgray";
+    keyDict["Y"] = "lightgray";
+    keyDict["Z"] = "lightgray";
     const [show, setShow] = useState(false);
     const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
@@ -90,12 +117,36 @@ function Gamepage() {
           setShowInvalid(true);
           return;
         }
-        var newLetters = correctLetters(word, dailyWord5);
-        for (let i = 0; i < 5; i++) {
-          document.getElementsByClassName(word[i])[0].style.backgroundColor = newLetters[i]; 
-          document.getElementsByClassName(word[i])[1].style.backgroundColor = newLetters[i];         
-        }
+        // keyDict = keyColors(keyDict,word,dailyWord5);
+        // Object.entries(keyDict).map(([key, value]) => {
+        // document.getElementsByClassName(key)[0].style.backgroundColor = value;
+        // })
         
+        var new_keys = correctLetters(word,dailyWord5);
+        for (let i = 0; i < 5; i++) {
+          var elements = document.getElementsByClassName(word[i]); // adding colour to keyboard when selected
+          for (let j = 0; j < elements.length; j++) {
+            if (new_keys[i] == "green" || elements[j].style.backgroundColor == "green") {
+              elements[j].style.backgroundColor = "green";
+              break;
+            }
+            else if (new_keys[i] == "yellow" && elements[j].style.backgroundColor != "green") {
+              elements[j].style.backgroundColor = "yellow"; // Reduce redundancies and preventing overwriting previous attempts
+              break;
+            }
+            else {
+              elements[j].style.backgroundColor = "gray";
+            }
+          }
+        }
+
+        for (let k = 0; k < 5; k++) {
+          var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
+          elements[0].style.backgroundColor = new_keys[k];
+        }
+
+        // String.fromCharCode(row+97)+String.fromCharCode(col+97)
+
         // Restart column, row and (word?) if valid
         setCurCol(0);
         setCurRow(curRow + 1);
