@@ -50,7 +50,7 @@ function Navbar()
           <p id ="c-nav-item">CS35L</p>
         </span>   
         <span id ="r-nav-item">
-          <button id = "r-button" onClick={() => navigate('/')}> Main Menu </button>
+          <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
         </span>
       </div>
     </div> 

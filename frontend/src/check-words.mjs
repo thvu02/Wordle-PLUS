@@ -2,6 +2,7 @@
 import {fiveLetters} from './five-letters.mjs';
 import {fourLetters} from './four-letters.mjs';
 import {sixLetters} from './six-letters.mjs';
+import {fiveAnswers} from './five-answers.mjs';
 
 /* Returns a bool representing whether word is a valid guess
  given the wordLength being guessed from (number of boxes) */
@@ -132,10 +133,27 @@ function wonGame(boxColors) {
     return result;
 }
 
+function getRandomWord(wordLength) {
+    var wordBank;
+    switch (wordLength) {
+        case 4:
+            wordBank = fourLetters;
+            break;
+        case 6:
+            wordBank = sixLetters;
+            break;
+        case 5:
+        default:
+            wordBank = fiveAnswers;
+    }
+    return wordBank[Math.floor(Math.random() * wordBank.length)];
+}
+
 
 export {
     isValidWord,
     correctLetters,
     keyColors,
-    wonGame
+    wonGame,
+    getRandomWord
 };

@@ -5,9 +5,10 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-import { correctLetters, isValidWord, keyColors } from '../check-words.mjs';
-import { dailyWord4 } from '../daily-word.js';
+import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
+let correctWord = getRandomWord(4).toUpperCase();
+console.log(correctWord);
 
 function Gamepage() {
     // definitions of state
@@ -22,6 +23,8 @@ function Gamepage() {
       [null, null, null, null],
     ]);
     const [show, setShow] = useState(false);
+    const [showWin, setShowWin] = useState(false);
+    const [showLoss, setShowLoss] = useState(false);
     const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
 
@@ -77,8 +80,18 @@ function Gamepage() {
 
     // handleEnter handles when the enter key is pressed on the keyboard
     function handleEnter(row, col) {
-      // Return early if we aren't at 4 letters yet
-        if (col !== 5) {
+    // Return early if we aren't at 4 letters yet
+      if (col !== 4) {
+        return;
+      } else {
+        // Get the current row's word
+        let word = "";
+        for (let i = 0; i < 4; i++) {
+          word += letters[row][i];
+        }
+        // Return early if the word isn't valid
+        if (!isValidWord(word,4)) {
+          setShowInvalid(true);
           return;
         } else {
           // Get the current row's word
@@ -92,7 +105,7 @@ function Gamepage() {
             return;
           }
           
-          var new_keys = correctLetters(word,dailyWord4);
+          var new_keys = correctLetters(word,correctWord);
           for (let i = 0; i < 4; i++) {
             var elements = document.getElementsByClassName(word[1]); // adding colour to keyboard when selected
             for (let j = 0; j < elements.length; j++) {
@@ -119,6 +132,25 @@ function Gamepage() {
           setCurCol(0);
           setCurRow(curRow + 1);
         }
+        // Check if the word is the same as the win condition
+        if (word == correctWord) {
+          console.log("game won!");
+          correctWord = getRandomWord(4).toUpperCase();
+          console.log(correctWord);
+          setShowWin(true);
+        } 
+        // Check if we are on the last row to know if we lost the game
+        else if (curRow === 5) {
+          console.log("game lost");
+          correctWord = getRandomWord(4).toUpperCase();
+          console.log(correctWord);
+          setShowLoss(true);
+        }
+        // Else restart the column and row if the word was valid but the game was neither won/lost on word
+        else {
+          setCurCol(0);
+          setCurRow(curRow + 1);
+        }        
       }
 
     return (
@@ -163,6 +195,22 @@ function Gamepage() {
             <Modal.Header closeButton>
               <Modal.Title>Please enter a valid word!</Modal.Title>
             </Modal.Header>
+          </Modal>
+          <Modal size="lg" show={showWin} onHide={() => setShowWin(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Congratulations!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <button onClick={() => navigate('/')}>Back to main menu</button>
+            </Modal.Body>
+          </Modal>
+          <Modal size="lg" show={showLoss} onHide={() => setShowLoss(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Better luck next time!</Modal.Title>  
+            </Modal.Header>  
+            <Modal.Body>
+              <button onClick={() => navigate('/')}>Back to main menu</button>
+            </Modal.Body>
           </Modal>
         </span>   
         <span id ="r-nav-item">
