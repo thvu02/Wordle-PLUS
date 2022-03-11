@@ -19,7 +19,7 @@
   z-index: 1;
 }
 
-#option1 {
+#fourLetters {
   background-color: rgba(124, 212, 136, 0.568);
   margin-top: 80px;
   width: 20%;
@@ -27,14 +27,14 @@
   margin-left: 40%;
 }
 
-#option2 {
+#fiveLetters {
   background-color: rgba(124, 212, 136, 0.568);
   width: 20%;
   margin-right: 40%;
   margin-left: 40%;
 }
 
-#option3 {
+#sixLetters {
   background-color: rgba(124, 212, 136, 0.568);
   width: 20%;
   margin-right: 40%;

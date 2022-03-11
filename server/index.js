@@ -29,8 +29,8 @@ mongoose.connection.once("open", () => {
 app.post('/addname', async (req, res) => {
   const new_user = new User({
     playerName: req.body.playerName,
-    playerScore: "TO_BE_FILLED",
-    gameVersion: "TO_BE_FILLED"
+    playerScore: "FILL_IN",
+    gameVersion: "FILL_IN"
   });
   new_user.save()
   console.log('Successfully created!')
@@ -39,7 +39,8 @@ app.post('/addname', async (req, res) => {
 
 app.get("/", async (req, res) => {
   User.find({})
-    .then((data) => res.status(200).json(data))
+    .then(
+      (data) => res.status(200).json(data))
     .catch((err) => console.log(err));
 });
 
