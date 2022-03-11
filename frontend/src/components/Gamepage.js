@@ -5,12 +5,12 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-
 import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(5).toUpperCase();
 console.log(correctWord);
 let oldCorrectWord;
+alert(correctWord);
 
 function Gamepage() {
     // definitions of state
@@ -52,9 +52,9 @@ function Gamepage() {
     keyDict["Y"] = "lightgray";
     keyDict["Z"] = "lightgray";
     const [show, setShow] = useState(false);
-    const [showInvalid, setShowInvalid] = useState(false);
     const [showWin, setShowWin] = useState(false);
     const [showLoss, setShowLoss] = useState(false);
+    const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
 
     // handleClick handles a regular letter press on the keyboard
@@ -119,10 +119,11 @@ function Gamepage() {
           word += letters[row][i];
         }
         // Return early if the word isn't valid
-        if (!(isValidWord(word,5))) {
+        if (!isValidWord(word,5)) {
           setShowInvalid(true);
           return;
         }
+        
         var new_keys = correctLetters(word,correctWord);
         for (let i = 0; i < 5; i++) {
           var elements = document.getElementsByClassName(word[i]); // adding colour to keyboard when selected
@@ -170,8 +171,8 @@ function Gamepage() {
       }
     }
 
-    return (
-      // look for key pressed down and trigger keypress handler event [tabIndex necessary]
+  return (
+  // look for key pressed down and trigger keypress handler event [tabIndex necessary]
     <div tabIndex="0" onKeyDown={handleKeypress}>
       <div class="nav-bar">
         <span id="l-nav-item">
@@ -233,7 +234,7 @@ function Gamepage() {
           </Modal>
         </span>   
         <span id ="r-nav-item">
-          <button id = "r-button" onClick={() => navigate('/Leaderboard')}> LEADERBOARD </button>
+          <button id = "r-button" onClick={() => navigate('/')}> MAIN MENU </button>
         </span>
       </div>
 
