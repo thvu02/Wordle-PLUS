@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import './Leaderboard.css';
-import { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import { useNavigate } from 'react-router-dom';
-
 import { BASE_URL } from ".././config.js";
 import Table from 'react-bootstrap/Table';
 import Axios from 'axios';
+import Navbar from './Navbar.js';
 
 const axios = Axios.create({
   baseURL: BASE_URL,
@@ -49,8 +46,11 @@ class Leaderboard extends Component {
 
   render() {
     const { data, filterAssist } = this.state;
+
+    console.log(1);
     return (
       <div>
+        < Navbar />
         <div classname="threeButtons">
           <button id="fourLetters" onClick={this.handleClick}>Easy Mode Rankings</button>
           <button id="fiveLetters" onClick={this.handleClick}>Medium Mode Rankings</button>
