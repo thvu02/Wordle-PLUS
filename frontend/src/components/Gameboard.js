@@ -7,7 +7,7 @@ function Gameboard(props) {
     function renderSquare(row, col) {
         return (
             <Square 
-                value={props.letters[row][col]}
+                value={(props.letters[row][col])}
             />
         )
     }

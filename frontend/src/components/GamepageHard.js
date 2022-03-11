@@ -22,6 +22,7 @@ function Gamepage() {
     const [show, setShow] = useState(false);
     const [showInvalid, setShowInvalid] = useState(false);
     const navigate = useNavigate();
+    
 
     // handleClick handles a regular letter press on the keyboard
     function handleClick(row, col, input) {
