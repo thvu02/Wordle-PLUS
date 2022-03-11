@@ -19,19 +19,29 @@ mongoose.connection.once("open", () => {
   console.log("MongoDB connected");
 });
 
+
+// TODO: Find way to update profile as we continue
+//       through the code (playerScore, gameVersion)
+//       Idea: set playerName as const var; import to
+//             other folders and using .update()
+
 app.post('/addname', async (req, res) => {
-  const playerName = new User(req.body);
-  playerName.save()
+  const new_user = new User({
+    playerName: req.body.playerName,
+    playerScore: "FILL_IN",
+    gameVersion: "FILL_IN"
+  });
+  new_user.save()
   console.log('Successfully created!')
-  return res.status(200).json(playerName);
+  return res.status(200).json(new_user);
 });
 
 app.get("/", async (req, res) => {
   User.find({})
-    .then((data) => console.log(data))
+    .then(
+      (data) => res.status(200).json(data))
     .catch((err) => console.log(err));
 });
-
 
 app.listen(5000, () => {
   console.log("Server running on port 5000");

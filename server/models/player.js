@@ -6,6 +6,12 @@ const userSchema = new schema({
     playerName: {
         type: String,
     },
+    playerScore: {
+        type: String,
+    },
+    gameVersion: {
+        type: String,
+    },
     status: {
         type: String,
     }

@@ -19,14 +19,38 @@
   z-index: 1;
 }
 
-.l-nav-item {
-  text-align: left;
+#fourLetters {
+  background-color: rgba(124, 212, 136, 0.568);
+  margin-top: 80px;
+  width: 20%;
+  margin-right: 40%;
+  margin-left: 40%;
+}
+
+#fiveLetters {
+  background-color: rgba(124, 212, 136, 0.568);
+  width: 20%;
+  margin-right: 40%;
+  margin-left: 40%;
+}
+
+#sixLetters {
+  background-color: rgba(124, 212, 136, 0.568);
+  width: 20%;
+  margin-right: 40%;
+  margin-left: 40%;
 }
 
 .leaderboardTable {
   background-color: rgba(212, 199, 124, 0.568);
-  margin-top: 100px;
+  margin-top: 20px;
 }
+
+.l-nav-item {
+  text-align: left;
+}
+
+
 
 #l-button{
   /* Text properties */
