@@ -37,16 +37,13 @@ class Leaderboard extends Component {
   handleClick(e) {
     var temp = e.target.id;
     if (temp == "fourLetters") {
-      this.setState(state => ( {filterAssist: "4"}));
-      // filterAssist = "4";
+      this.setState(state => ( {filterAssist: "Easy"}));
     }
     else if (temp == "sixLetters") {
-      this.setState(state => ( {filterAssist: "6"}));
-      // filterAssist = "6";
+      this.setState(state => ( {filterAssist: "Hard"}));
     }
     else {
-      this.setState(state => ( {filterAssist: "5"}));
-      // filterAssist = "5";
+      this.setState(state => ( {filterAssist: "Medium"}));
     }
   }
 
@@ -55,9 +52,9 @@ class Leaderboard extends Component {
     return (
       <div>
         <div classname="threeButtons">
-          <button id="fourLetters" onClick={this.handleClick} data_id='4'>4 Letters</button>
-          <button id="fiveLetters" onClick={this.handleClick} data_id='5'>5 Letters</button>
-          <button id="sixLetters" onClick={this.handleClick} data_id='6'>6 Letters</button>
+          <button id="fourLetters" onClick={this.handleClick}>Easy Mode Rankings</button>
+          <button id="fiveLetters" onClick={this.handleClick}>Medium Mode Rankings</button>
+          <button id="sixLetters" onClick={this.handleClick}>Hard Mode Rankings</button>
         </div>
         <div className="leaderboardTable">
           <Table striped bordered condensed hover>
@@ -66,7 +63,7 @@ class Leaderboard extends Component {
                 <th>Rankings</th>
                 <th>Name</th>
                 <th>Score</th>
-                <th>Game Version</th>
+                <th>Game Mode</th>
               </tr>
             </thead>
             <tbody>
