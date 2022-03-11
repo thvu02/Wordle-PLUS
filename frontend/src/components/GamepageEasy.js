@@ -5,11 +5,11 @@ import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from 'react-router-dom';
 import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
-import { isValidWord, getRandomWord } from '../check-words.mjs';
+import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(4).toUpperCase();
 console.log(correctWord);
-alert(correctWord);
+alert(correctWord)
 
 function Gamepage() {
     // definitions of state
@@ -87,8 +87,7 @@ function Gamepage() {
       const lettersConst = [...letters];
       // check cases for special key presses
       if (event.code === "Enter") {
-        // PLACEHOLDER until a new function is added that checks if the word is valid 
-        handleEnter(curRow, curCol, "worde");
+        handleEnter(curRow, curCol);
       }
       else if (event.code === "Backspace") {
         handleBackspace(curRow, curCol);
@@ -140,6 +139,11 @@ function handleEnter(row, col) {
             elements[j].style.backgroundColor = "gray";
           }
         }
+      }
+      for (let k = 0; k < 4; k++) {
+        var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
+        elements[0].style.backgroundColor = new_keys[k];
+      }
         // Check if the word is the same as the win condition
         if (word == correctWord) {
           console.log("game won!");
@@ -161,17 +165,6 @@ function handleEnter(row, col) {
         }
       }
     }
-
-      for (let k = 0; k < 4; k++) {
-        var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
-        elements[0].style.backgroundColor = new_keys[k];
-      }
-
-      // Restart column, row and (word?) if valid
-      setCurCol(0);
-      setCurRow(curRow + 1);
-    }
-  }
 
     return (
       // look for key pressed down and trigger keypress handler event [tabIndex necessary]

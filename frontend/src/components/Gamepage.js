@@ -7,8 +7,9 @@ import Keyboard from './Keyboard';
 import Gameboard from './Gameboard';
 import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
-let correctWord = getRandomWord(4).toUpperCase();
+let correctWord = getRandomWord(5).toUpperCase();
 console.log(correctWord);
+alert(correctWord);
 
 function Gamepage() {
     // definitions of state
@@ -145,9 +146,25 @@ function Gamepage() {
           elements[0].style.backgroundColor = new_keys[k];
         }
 
-        // Restart column, row and (word?) if valid
-        setCurCol(0);
-        setCurRow(curRow + 1);
+        // Check if the word is the same as the win condition
+        if (word == correctWord) {
+          console.log("game won!");
+          correctWord = getRandomWord(5).toUpperCase();
+          console.log(correctWord);
+          setShowWin(true);
+        } 
+        // Check if we are on the last row to know if we lost the game
+        else if (curRow === 5) {
+          console.log("game lost");
+          correctWord = getRandomWord(5).toUpperCase();
+          console.log(correctWord);
+          setShowLoss(true);
+        }
+        // Else restart the column and row if the word was valid but the game was neither won/lost on word
+        else {
+          setCurCol(0);
+          setCurRow(curRow + 1);
+        }
       }
     }
 

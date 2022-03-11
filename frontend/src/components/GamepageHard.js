@@ -9,6 +9,7 @@ import { correctLetters, isValidWord, getRandomWord } from '../check-words.mjs';
 
 let correctWord = getRandomWord(6).toUpperCase();
 console.log(correctWord);
+alert(correctWord)
 
 function Gamepage() {
     // definitions of state
@@ -138,6 +139,11 @@ function handleEnter(row, col) {
             elements[j].style.backgroundColor = "gray";
           }
         }
+      }
+      for (let k = 0; k < 6; k++) {
+        var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
+        elements[0].style.backgroundColor = new_keys[k];
+      }
         // Check if the word is the same as the win condition
         if (word == correctWord) {
           console.log("game won!");
@@ -158,17 +164,7 @@ function handleEnter(row, col) {
           setCurRow(curRow + 1);
         }
       }
-
-      for (let k = 0; k < 6; k++) {
-        var elements = document.getElementsByClassName(String.fromCharCode(curRow+97)+String.fromCharCode(k+97)); // storing colour arrangement for the grid
-        elements[0].style.backgroundColor = new_keys[k];
-      }
-
-      // Restart column, row and (word?) if valid
-      setCurCol(0);
-      setCurRow(curRow + 1);
     }
-  }
 
     return (
       // look for key pressed down and trigger keypress handler event [tabIndex necessary]
