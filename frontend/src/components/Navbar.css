@@ -106,9 +106,9 @@ top:20px;
 #yellow {
   height: 60px;
   width: 60px;
-  border: 2px solid #d5b60a;
+  border: 2px solid yellow;
   color: White;
-  background-color:#d5b60a;
+  background-color:yellow;
 
   font-family: "Franklin Gothic Medium";
   font-size: 35px;

@@ -176,7 +176,7 @@ function handleEnter(row, col) {
                 <p id="txt"> The letter G is not in the word in any spot. </p> 
               </div>
               <hr id="line" />
-              <p> A new WORDLE will be available each day! </p> 
+              <p> A new WORD TO GUESS will be available for every gameplay! </p> 
             </Modal.Body>
           </Modal>
         </span> 
@@ -192,7 +192,7 @@ function handleEnter(row, col) {
               <Modal.Title>Congratulations!</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <button onClick={() => navigate('/')}>Back to main menu</button>
+                <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
           <Modal size="lg" show={showLoss} onHide={() => setShowLoss(false)}>
@@ -200,7 +200,7 @@ function handleEnter(row, col) {
               <Modal.Title>Better luck next time!</Modal.Title>  
             </Modal.Header>  
             <Modal.Body>
-              <button onClick={() => navigate('/')}>Back to main menu</button>
+              <button onClick={() => navigate('/Leaderboard')}>LEADERBOARD</button>
             </Modal.Body>
           </Modal>
         </span>   
