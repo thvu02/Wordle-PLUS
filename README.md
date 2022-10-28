@@ -1,16 +1,16 @@
-# CS-35L-Team-Project---C.A.N.N.T.
+# CS 35L Team Project - Wordle PLUS
 
 ## Description
 
-FAKE WORDLE web app is an attempt by our team to recreate the famous WORDLE app officially run by The New York Times website. 
+The Wordle PLUS web app is our team's attempt to recreate the famous WORDLE app officially run by The New York Times website. 
 
-In Fake Wordle, players have the option to play the game with either 4 letter word, 5 letter word or 6 letter word. Instruction is available to be viewed by simply clicking on the Instruction button appeared on top of the app.
+In Wordle PLUS, players have the option to play the game with either a 4 letter word, 5 letter word or 6 letter word. Instruction is available to be viewed by simply clicking on the Instruction button appeared on top of the app.
 
-Player must enter a name and click on one of the Difficulty button to play the game. After the game has been played, each player stats will be posted onto leaderboard, which include the rank and the score of each player. 
+Players must enter a name and click on one of the Difficulty buttons to play the game. After the game has been played, each player's stats will be posted onto leaderboard, which includes the rank and the score of each player. 
 
 ## Key Features
 
-  1. Dynamic Homepage with buttons allowing players to navigate through the webapp and enter their names. 
+  1. Dynamic Homepage with buttons allowing players to navigate through the web app and enter their names. 
   2. Upload Name entered by the player to the server side to keep track of the player stats.  
   3. Game Instruction as a react-modal component that displays the instruction on how to play the game to players when they clicked on the Instruction button.
   4. Dynamic Gamepage with a gameboard and a keyboard that changes colors when the player entered the guesses word. 
