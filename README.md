@@ -1,4 +1,4 @@
-# CS 35L Team Project - Wordle PLUS
+# Wordle PLUS
 
 ## Description
 
